@@ -84,7 +84,7 @@ async def forward(bot: Client, message: Message):
 	   	last_message_times[user_id] = time.time()
 	   else:
              if user_message_count.get(user_id, 0) >= int(max_posts_per_day):
-	     	return await message.reply_text("Limit Reached!\n\nYou Have 0 Remaining Post Left.\n\nIt will automatically refresh at 12am")
+		     return await message.reply_text("Limit Reached!\n\nYou Have 0 Remaining Post Left.\n\nIt will automatically refresh at 12am")
 	     time_since_last_message = time.time() - last_message_times[user_id]
 	     if time_since_last_message < int(max_time):
 	         remaining_time = int(max_time) - time_since_last_message
