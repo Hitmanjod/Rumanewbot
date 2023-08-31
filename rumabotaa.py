@@ -92,7 +92,7 @@ async def forward(bot: Client, message: Message):
 	         if message.text:
 	         	await bot.send_message(channel_id, message.text.html)
 	         elif message.media:
-	         	file_id = client.download_media(message)
+	         	file_id = bot.download_media(message)
 	         	await bot.send_photo(channel_id, file_id, caption=message.text.html)
 	         else:
 	         	print("This is document")
