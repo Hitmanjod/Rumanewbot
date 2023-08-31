@@ -9,9 +9,9 @@ from logging.handlers import RotatingFileHandler
 
 api_id = 3748059
 api_hash = "f8c9df448f3ba20a900bc2ffc8dae9d5"
-bot_token = "6316504937:AAFD1OeKOmT0ri4xLvo3lU33cCSK6Eb5dyo"
-chat_id = -1001741911065
-channel_id = -1001882669202
+bot_token = "6320403496:AAEK8iBPhDettDzW34dY8GBLEc98JaCXI-Q"
+chat_id = -1001986181510
+channel_id = -1001964061984
 last_message_times = {}
 user_message_count = {}
 allow_id = "1155668831"
@@ -82,7 +82,7 @@ async def forward(bot: Client, message: Message):
 	     time_since_last_message = time.time() - last_message_times[user_id]
 	     if time_since_last_message < int(max_time):
 	         remaining_time = int(max_time) - time_since_last_message
-	         cooldown_message = f"Please wait {int(remaining_time / 60)} minutes and {int(remaining_time % 60)} seconds before posting another message to the channel."
+	         cooldown_message = f"Please wait {int(remaining_time / 60)} minutes and {int(remaining_time % 60)} seconds before posting another message to the channel.\n\nYour Message Added to Queque Successfully Also"
 	         await message.reply_text(cooldown_message)
 	         await asyncio.sleep(remaining_time)
 	         last_message_times[user_id] = time.time()
@@ -93,7 +93,7 @@ async def forward(bot: Client, message: Message):
 	         	await bot.send_photo(channel_id, file_id, caption=message.text.html)
 	         else:
 	         	print("This is document")
-	         	user_message_count[user_id] = user_message_count.get(user_id, 0) + 1
+	         user_message_count[user_id] = user_message_count.get(user_id, 0) + 1
 	     if user_message_count.get(user_id, 0) >= int(max_posts_per_day):
 	     	return await message.reply_text("Limit Reached!\n\nYou Have 0 Remaining Post Left.\n\nIt will automatically refresh at 12am")
 	last_message_times[user_id] = time.time()
