@@ -47,10 +47,11 @@ async def start(bot: Client, message: Message):
 	
 @bot.on_message(filters.command(["deletelast"]))
 async def start(bot: Client, message: Message):
+	if str(message.from_user.id) not in str(allowed_user_id):
+		return
 	contain_id = message.text.split(" ")
 	if len(contain_id) == 2:
 	    lol_message = int(contain_id[1])
-	    print(lol_message)
 	    await bot.delete_messages(channel_id, lol_message)
 	else:
 	    msg = await bot.send_message(channel_id, " Deleting Last Message ")
@@ -103,7 +104,7 @@ async def forward(bot: Client, message: Message):
 	if message.text:
 		 await bot.send_message(channel_id, message.text.html)
 	elif message.media:
-		 file_id = client.download_media(message)
+		 file_id = bot.download_media(message)
 		 await bot.send_photo(channel_id, file_id, caption=message.text.html)
 	else:
 		 print("This is document")
