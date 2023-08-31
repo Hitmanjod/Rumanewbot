@@ -67,9 +67,9 @@ async def forward(bot: Client, message: Message):
 	user_id = message.from_user.id
 	try:
 	    if message.text.startswith('.'):
-		return print("Message Started From .")
+		    return print("Message Started From .")
 	except:
-            pass
+		pass
 	global last_message_times, user_message_count
 	if message.text == "/sub":
 		if user_message_count.get(user_id, 0) >= int(max_posts_per_day):
