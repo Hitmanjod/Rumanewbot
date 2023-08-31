@@ -17,7 +17,7 @@ user_message_count = {}
 allow_id = "1155668831"
 allowed_user_id = allow_id.split(" ")
 max_posts_per_day = 4
-max_time = 300
+max_time = 30
 
 logging.basicConfig(
     level=logging.DEBUG,
