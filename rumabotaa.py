@@ -65,15 +65,18 @@ async def start(bot: Client, message: Message):
 @bot.on_message(filters.chat(chat_id))
 async def forward(bot: Client, message: Message):
 	user_id = message.from_user.id
-	if message.text.startswith('.'):
+        try:
+	    if message.text.startswith('.'):
 		return print("Message Started From .")
+	except:
+            pass
 	global last_message_times, user_message_count
 	if message.text == "/sub":
 		if user_message_count.get(user_id, 0) >= int(max_posts_per_day):
 		  remaining_posts = 0
 		else:
 		  remaining_posts = int(max_posts_per_day) - user_message_count.get(user_id, 0)
-		  remaining_posts_message = f"$ Remaining Post :{remaining_posts} out of {max_posts_per_day} posts today\n\n$ Total Posted = {user_message_count.get(user_id, 0)}"
+		  remaining_posts_message = f"• Remaining Post :{remaining_posts} out of {max_posts_per_day} posts today\n\n• Total Posted = {user_message_count.get(user_id, 0)}"
 		  return await message.reply_text(remaining_posts_message)
 	if user_id in last_message_times:
 	   if str(user_id) in str(allowed_user_id):
