@@ -94,8 +94,8 @@ async def forward(bot: Client, message: Message):
 	         	await bot.send_message(channel_id, message.text.html)
 	         elif message.media:
                         print(message)
-	         	file_id = await bot.download_media(message)
-	         	await bot.send_photo(channel_id, file_id, caption=message.caption.html)
+                        file_id = await bot.download_media(message)
+                        await bot.send_photo(channel_id, file_id, caption=message.caption.html)
 	         else:
 	         	print("This is document")
 	         user_message_count[user_id] = user_message_count.get(user_id, 0) + 1
