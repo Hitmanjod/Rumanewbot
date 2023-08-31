@@ -65,7 +65,7 @@ async def start(bot: Client, message: Message):
 @bot.on_message(filters.chat(chat_id))
 async def forward(bot: Client, message: Message):
 	user_id = message.from_user.id
-        try:
+	try:
 	    if message.text.startswith('.'):
 		return print("Message Started From .")
 	except:
