@@ -17,7 +17,7 @@ user_message_count = {}
 allow_id = "1155668831"
 allowed_user_id = allow_id.split(" ")
 max_posts_per_day = 4
-max_time = 30
+max_time = 300
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -95,7 +95,6 @@ async def forward(bot: Client, message: Message):
                  if message.text:
                          await bot.send_message(channel_id, message.text.html)
                  elif message.media:
-                         print(message)
                          file_id = await bot.download_media(message)
                          await bot.send_photo(channel_id, file_id, caption=message.caption.html)
                  else:
