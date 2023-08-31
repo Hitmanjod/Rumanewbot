@@ -91,9 +91,9 @@ async def forward(bot: Client, message: Message):
                  cooldown_message = f"Please wait {int(remaining_time / 60)} minutes and {int(remaining_time % 60)} seconds before posting another message to the channel.\n\nYour Message Added to Queque Successfully Also"
                  await message.reply_text(cooldown_message)
                  await asyncio.sleep(remaining_time)
-	         last_message_times[user_id] = time.time()
-	         if message.text:
-	         	await bot.send_message(channel_id, message.text.html)
+                 last_message_times[user_id] = time.time()
+                 if message.text:
+	                await bot.send_message(channel_id, message.text.html)
 	         elif message.media:
                         print(message)
                         file_id = await bot.download_media(message)
