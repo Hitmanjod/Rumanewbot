@@ -93,20 +93,20 @@ async def forward(bot: Client, message: Message):
                  await asyncio.sleep(remaining_time)
                  last_message_times[user_id] = time.time()
                  if message.text:
-                         await bot.send_message(channel_id, f"{message.text.html}\n\nPosted by {message.from_user.useraname}")
+                         await bot.send_message(channel_id, f"{message.text.html}\n\nPosted by @{message.from_user.useraname}")
                  elif message.media:
                          file_id = await bot.download_media(message)
-                         await bot.send_photo(channel_id, file_id, caption=f"{message.caption.html}\n\nPosted by {message.from_user.username}")
+                         await bot.send_photo(channel_id, file_id, caption=f"{message.caption.html}\n\nPosted by @{message.from_user.username}")
                  else:
                  	return print("This is document")
                  user_message_count[user_id] = user_message_count.get(user_id, 0) + 1
                  
 	last_message_times[user_id] = time.time()
 	if message.text:
-		 await bot.send_message(channel_id, f"{message.text.html}\n\nPosted by {message.from_user.username}")
+		 await bot.send_message(channel_id, f"{message.text.html}\n\nPosted by @{message.from_user.username}")
 	elif message.media:
          file_id = await bot.download_media(message)
-         await bot.send_photo(channel_id, file_id, caption=f"{message.caption.html}\n\nPosted by {message.from_user.username}")
+         await bot.send_photo(channel_id, file_id, caption=f"{message.caption.html}\n\nPosted by @{message.from_user.username}")
 	else:
 		 print("This is document")
 	user_message_count[user_id] = user_message_count.get(user_id, 0) + 1
