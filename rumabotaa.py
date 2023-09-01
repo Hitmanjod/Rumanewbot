@@ -100,7 +100,7 @@ async def forward(bot: Client, message: Message):
                  else:
                  	return print("This is document")
                  user_message_count[user_id] = user_message_count.get(user_id, 0) + 1
-                 
+                 return 
 	last_message_times[user_id] = time.time()
 	if message.text:
 		 await bot.send_message(channel_id, f"{message.text.html}\n\nPosted by @{message.from_user.username}")
