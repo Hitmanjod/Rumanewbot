@@ -93,7 +93,7 @@ async def forward(bot: Client, message: Message):
                  await asyncio.sleep(remaining_time)
                  last_message_times[user_id] = time.time()
                  if message.text:
-                         await bot.send_message(channel_id, f"{message.text.html}\n\nPosted by @{message.from_user.useraname}")
+                         await bot.send_message(channel_id, f"{message.text.html}\n\nPosted by @{message.from_user.username}")
                  elif message.media:
                          file_id = await bot.download_media(message)
                          await bot.send_photo(channel_id, file_id, caption=f"{message.caption.html}\n\nPosted by @{message.from_user.username}")
