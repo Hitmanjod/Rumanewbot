@@ -67,8 +67,8 @@ async def start(bot: Client, message: Message):
 async def forward(bot: Client, message: Message):
 	user_id = message.from_user.id
 	try:
-	    if message.text.startswith('.'):
-		    return print("Message Started From .")
+	    if message.text.startswith('.') or message.text.startswith('/'):
+		    return print("Message Started From . or /")
 	except:
 		pass
 	global last_message_times, user_message_count
