@@ -9,14 +9,14 @@ from logging.handlers import RotatingFileHandler
 
 api_id = 3748059
 api_hash = "f8c9df448f3ba20a900bc2ffc8dae9d5"
-bot_token = "6320403496:AAEK8iBPhDettDzW34dY8GBLEc98JaCXI-Q"
-chat_id = -1001986181510
-channel_id = -1001964061984
+bot_token = "6138700672:AAEvQsV-N4LRIrCY0_M4bHLpNaRXnJWHyLg"
+chat_id = -1001656448455
+channel_id = -1001750559161
 last_message_times = {}
 user_message_count = {}
-allow_id = "1155668831"
+allow_id = "5591734243"
 allowed_user_id = allow_id.split(" ")
-max_posts_per_day = 4
+max_posts_per_day = 3
 max_time = 300
 
 logging.basicConfig(
