@@ -9,12 +9,12 @@ from logging.handlers import RotatingFileHandler
 
 api_id = 3748059
 api_hash = "f8c9df448f3ba20a900bc2ffc8dae9d5"
-bot_token = "6648894114:AAF-Lv3IalLBVq0DJ8YUXJglUCNFY671ZI4"
-chat_id = -1001610151919
-channel_id = -1001903796053
+bot_token = "6385806619:AAHrdbOgPVL1e6Slo9rMZC1KgL3ZQfwgLVI"
+chat_id = -1001966244490
+channel_id = -1001965686230
 last_message_times = {}
 user_message_count = {}
-allow_id = "5475778989"
+allow_id = "6170272669"
 allowed_user_id = allow_id.split(" ")
 max_posts_per_day = 4
 max_time = 180
