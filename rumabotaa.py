@@ -9,15 +9,15 @@ from logging.handlers import RotatingFileHandler
 
 api_id = 3748059
 api_hash = "f8c9df448f3ba20a900bc2ffc8dae9d5"
-bot_token = "6528749532:AAHjpAOs15zE1SKPP2gInWwiFcUxKv5j2Wo"
-chat_id = -1001985531421
-channel_id = -1001831153140
+bot_token = "6385806619:AAFnE3VQtxEcY3BOA4AM_Wc8KeNX7HcSCSI"
+chat_id = -1001974131191
+channel_id = -1001965686230
 last_message_times = {}
 user_message_count = {}
-allow_id = "1660737576"
+allow_id = "6170272669"
 allowed_user_id = allow_id.split(" ")
-max_posts_per_day = 6
-max_time = 600
+max_posts_per_day = 4
+max_time = 300
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -28,6 +28,7 @@ logging.basicConfig(
         logging.StreamHandler(),
     ],
 )
+
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 LOGS = logging.getLogger()
 
@@ -40,12 +41,12 @@ bot = Client(
     api_hash=api_hash,
 )
 
-@bot.on_message(filters.command(["start"]))
+@bot.on_message(filters.command(["start"]) ~filters.bot)
 async def start(bot: Client, message: Message):
-	await message.reply("Hello How are you")
+	await message.reply("Click the button below to join the #Official Fuze Marketplace", )
 	
 	
-@bot.on_message(filters.command(["deletelast"]))
+@bot.on_message(filters.command(["deletelast"]) ~filters.bot)
 async def start(bot: Client, message: Message):
 	if str(message.from_user.id) not in str(allowed_user_id):
 		return
@@ -63,7 +64,7 @@ async def start(bot: Client, message: Message):
 	    except Exception as e:
 	    	print(e)
 	
-@bot.on_message(filters.chat(chat_id))
+@bot.on_message(filters.chat(chat_id) ~filters.bot)
 async def forward(bot: Client, message: Message):
 	user_id = message.from_user.id
 	global last_message_times, user_message_count
