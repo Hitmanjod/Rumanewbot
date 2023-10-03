@@ -1,7 +1,7 @@
 import logging
 import time
 from pyrogram import Client, filters
-from pyrogram.types import Message
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.enums import ParseMode
 import asyncio
 from logging.handlers import RotatingFileHandler
