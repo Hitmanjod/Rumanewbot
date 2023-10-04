@@ -45,7 +45,7 @@ allowed_user_id = allow_id.split(" ")
 
 @bot.on_message(filters.command(["start"]) & ~filters.bot)
 async def start(bot: Client, message: Message):
-	await message.reply("Click the button below to join the #Official Fuze Marketplace", reply_markup=InlineKeyboardMarkup[[InlineKeyboardButton("Join channel", url=f"{mp_link}")]])
+	await message.reply("Click the button below to join the #Official Fuze Marketplace", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join channel", url=f"{mp_link}")]]))
 	
 	
 @bot.on_message(filters.command(["deletelast"]) & ~filters.bot)
