@@ -43,12 +43,12 @@ last_message_times = {}
 user_message_count = {}
 allowed_user_id = allow_id.split(" ")
 
-@bot.on_message(filters.command(["start"]) ~filters.bot)
+@bot.on_message(filters.command(["start"]) & ~filters.bot)
 async def start(bot: Client, message: Message):
 	await message.reply("Click the button below to join the #Official Fuze Marketplace", reply_markup=InlineKeyboardMarkup[[InlineKeyboardButton("Join channel", url=f"{mp_link}")]])
 	
 	
-@bot.on_message(filters.command(["deletelast"]) ~filters.bot)
+@bot.on_message(filters.command(["deletelast"]) & ~filters.bot)
 async def start(bot: Client, message: Message):
 	if str(message.from_user.id) not in str(allowed_user_id):
 		return
@@ -66,7 +66,7 @@ async def start(bot: Client, message: Message):
 	    except Exception as e:
 	    	print(e)
 	
-@bot.on_message(filters.chat(chat_id) ~filters.bot)
+@bot.on_message(filters.chat(chat_id) & ~filters.bot)
 async def forward(bot: Client, message: Message):
 	user_id = message.from_user.id
 	global last_message_times, user_message_count
