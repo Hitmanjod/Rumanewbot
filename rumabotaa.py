@@ -9,13 +9,13 @@ from logging.handlers import RotatingFileHandler
 
 api_id = 3748059
 api_hash = "f8c9df448f3ba20a900bc2ffc8dae9d5"
-bot_token = "6648894114:AAF-Lv3IalLBVq0DJ8YUXJglUCNFY671ZI4"
-chat_id = -1001610151919
-channel_id = -1001903796053
-mp_link = "https://t.me/shelbytaw"
-allow_id = "5475778989"
-max_posts_per_day = 4
-max_time = 300
+bot_token = "6528749532:AAHjpAOs15zE1SKPP2gInWwiFcUxKv5j2Wo"
+chat_id = -1001985531421
+channel_id = -1001831153140
+mp_link = "https://t.me/uhqmpz"
+allow_id = "1660737576"
+max_posts_per_day = 6
+max_time = 600
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -45,7 +45,7 @@ allowed_user_id = allow_id.split(" ")
 
 @bot.on_message(filters.command(["start"]) & ~filters.bot)
 async def start(bot: Client, message: Message):
-	await message.reply("Click the button below to join the #Official Shelby Marketplace", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join channel", url=f"{mp_link}")]]))
+	await message.reply("Click the button below to join the #Official UHQ Marketplace", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join channel", url=f"{mp_link}")]]))
 	
 	
 @bot.on_message(filters.command(["deletelast"]) & ~filters.bot)
