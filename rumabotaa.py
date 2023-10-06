@@ -77,14 +77,14 @@ async def forward(bot: Client, message: Message):
 		        remaining_posts = 0
 		    else:
 		        remaining_posts = int(max_posts_per_day) - user_message_count.get(message.reply_to_message.from_user.id, 0)
-		        remaining_posts_message = f"• Remaining Post :{remaining_posts} out of {max_posts_per_day} posts today\n\n• Total Posted = {user_message_count.get(message.reply_to_message.from_user.id, 0)}"
+		    remaining_posts_message = f"• Remaining Post :{remaining_posts} out of {max_posts_per_day} posts today\n\n• Total Posted = {user_message_count.get(message.reply_to_message.from_user.id, 0)}"
 		    return await message.reply_text(remaining_posts_message)
 		else:
 		    if user_message_count.get(user_id, 0) >= int(max_posts_per_day):
 		        remaining_posts = 0
 		    else:
 		        remaining_posts = int(max_posts_per_day) - user_message_count.get(user_id, 0)
-		        remaining_posts_message = f"• Remaining Post :{remaining_posts} out of {max_posts_per_day} posts today\n\n• Total Posted = {user_message_count.get(user_id, 0)}"
+		    remaining_posts_message = f"• Remaining Post :{remaining_posts} out of {max_posts_per_day} posts today\n\n• Total Posted = {user_message_count.get(user_id, 0)}"
 		    return await message.reply_text(remaining_posts_message)
 	try:
 	    if message.text.startswith('.') or message.text.startswith('/'):
