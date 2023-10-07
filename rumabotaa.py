@@ -9,7 +9,7 @@ from logging.handlers import RotatingFileHandler
 
 api_id = 3748059
 api_hash = "f8c9df448f3ba20a900bc2ffc8dae9d5"
-bot_token = "6385806619:AAFnE3VQtxEcY3BOA4AM_Wc8KeNX7HcSCSI"
+bot_token = "6648894114:AAF-Lv3IalLBVq0DJ8YUXJglUCNFY671ZI4"
 chat_id = -1001610151919
 channel_id = -1001903796053
 mp_link = "https://t.me/shelbytaw"
