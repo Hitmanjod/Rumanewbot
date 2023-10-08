@@ -10,8 +10,8 @@ from logging.handlers import RotatingFileHandler
 api_id = 3748059
 api_hash = "f8c9df448f3ba20a900bc2ffc8dae9d5"
 bot_token = "6385806619:AAFnE3VQtxEcY3BOA4AM_Wc8KeNX7HcSCSI"
-chat_id = -1001965686230
-channel_id = -1001974131191
+chat_id = -1001966244490
+channel_id = -1001965686230
 mp_link = "https://t.me/+S7eRH90lM38wNmQ1"
 allow_id = "6170272669"
 max_posts_per_day = 4
