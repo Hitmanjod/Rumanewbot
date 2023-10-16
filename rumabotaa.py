@@ -9,12 +9,12 @@ from logging.handlers import RotatingFileHandler
 
 api_id = 3748059
 api_hash = "f8c9df448f3ba20a900bc2ffc8dae9d5"
-bot_token = "6320403496:AAEK8iBPhDettDzW34dY8GBLEc98JaCXI-Q"
-chat_id = -1001986181510
-channel_id = -1001964061984
-mp_link = "https://t.me/+oVqB_bTso2VjNmU9"
-allow_id = "1155668831"
-max_posts_per_day = 4
+bot_token = "6385806619:AAFnE3VQtxEcY3BOA4AM_Wc8KeNX7HcSCSI"
+chat_id = -1001966244490
+channel_id = -1001965686230
+mp_link = "https://t.me/+S7eRH90lM38wNmQ1"
+allow_id = "6170272669"
+max_posts_per_day = 3
 max_time = 300
 
 logging.basicConfig(
@@ -96,11 +96,11 @@ async def forward(bot: Client, message: Message):
 	   	last_message_times[user_id] = time.time()
 	   else:
              if user_message_count.get(user_id, 0) >= int(max_posts_per_day):
-                 return await message.reply_text("Limit Reached!\n\nYou Have 0 Remaining Post Left.\n\nIt will automatically refresh at 12am")
+                 return await message.reply_text("Today's Post Limit Exceeded !!!\n\nYou've now no posts left in your daily sub - wait 12 hours to refresh the post limit.")
              time_since_last_message = time.time() - last_message_times[user_id]
              if time_since_last_message < int(max_time):
                  remaining_time = int(max_time) - time_since_last_message
-                 cooldown_message = f"Please wait {int(remaining_time / 60)} minutes and {int(remaining_time % 60)} seconds before posting another message to the channel.\n\nYour Message Added to Queque Successfully Also"
+                 cooldown_message = f"Please wait {int(remaining_time / 60)} minutes & {int(remaining_time % 60)} seconds before posting another message to the channel.\n\n**Your post is added to queue & will be posted after {int(remaining_time / 60)} minutes & {int(remaining_time % 60)} seconds automatically.**"
                  await message.reply_text(cooldown_message)
                  await asyncio.sleep(remaining_time)
                  last_message_times[user_id] = time.time()
