@@ -9,7 +9,7 @@ from logging.handlers import RotatingFileHandler
 
 api_id = 3748059
 api_hash = "f8c9df448f3ba20a900bc2ffc8dae9d5"
-bot_token = "6378567744:AAGkZLhGgtdlKECfDnSmPeJAHFHSIVWW_0c"
+bot_token = "6681950760:AAHjCXdV6YN7JUbc_UUEcaLfpyf0eXGMW6k"
 chat_id = -1002086694702
 channel_id = -1001800745828
 mp_link = "https://t.me/SoykMotion"
