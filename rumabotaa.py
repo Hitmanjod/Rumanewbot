@@ -9,10 +9,10 @@ from logging.handlers import RotatingFileHandler
 
 api_id = 3748059
 api_hash = "f8c9df448f3ba20a900bc2ffc8dae9d5"
-bot_token = "6681950760:AAHjCXdV6YN7JUbc_UUEcaLfpyf0eXGMW6k"
-chat_id = -1002086694702
-channel_id = -1001800745828
-mp_link = "https://t.me/SoykMotion"
+bot_token = "6815912866:AAGt9sdcdbBGXYr7wnujLr-qxF7_rzUAIXw"
+chat_id = -1002082600545
+channel_id = -1001828917626
+mp_link = "https://t.me/sassympp"
 allow_id = "1861109163"
 max_posts_per_day = 4
 max_time = 300
@@ -103,6 +103,8 @@ async def forward(bot: Client, message: Message):
                  cooldown_message = f"Please wait {int(remaining_time / 60)} minutes & {int(remaining_time % 60)} seconds before posting another message to the channel.\n\n**Your post is added to queue & will be posted after {int(remaining_time / 60)} minutes & {int(remaining_time % 60)} seconds automatically.**"
                  await message.reply_text(cooldown_message)
                  await asyncio.sleep(remaining_time)
+                 if user_message_count.get(user_id, 0) >= int(max_posts_per_day):
+                     return await message.reply_text("Today's Post Limit Exceeded !!!\n\nYou've now no posts left in your daily sub - wait 12 hours to refresh the post limit.")
                  last_message_times[user_id] = time.time()
                  if message.text:
                          await bot.send_message(channel_id, f"{message.text.html}\n\nPosted by @{message.from_user.username}")
