@@ -14,7 +14,7 @@ chat_id = -1002082600545
 channel_id = -1001828917626
 mp_link = "https://t.me/sassympp"
 allow_id = "1861109163"
-max_posts_per_day = 4
+max_posts_per_day = 5
 max_time = 300
 
 logging.basicConfig(
