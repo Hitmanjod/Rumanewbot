@@ -125,4 +125,12 @@ async def forward(bot: Client, message: Message):
 		 print("This is document")
 	user_message_count[user_id] = user_message_count.get(user_id, 0) + 1
 
-bot.run()
+async def start_bot():
+    await bot.start()
+    lol = await bot.get_me()
+    print(lol)
+    await bot.send_message(chat_id, "Refreshed")
+    await idle()
+	
+loop = asyncio.get_event_loop()
+loop.run_until_complete(start_bot())
