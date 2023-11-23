@@ -128,8 +128,7 @@ async def forward(bot: Client, message: Message):
 async def start_bot():
     await bot.start()
     lol = await bot.get_me()
-    print(lol)
-    await bot.send_message(chat_id, "Refreshed")
+    await bot.send_photo(chat_id, "https://telegra.ph/file/2707a66c92ba3c2e40cee.jpg", f"#START\n\nVersion:- α • 1.1\n\nYour Market Place Bot Has Been Started Successfully")
     await idle()
 	
 loop = asyncio.get_event_loop()
