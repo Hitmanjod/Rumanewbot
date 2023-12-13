@@ -9,11 +9,11 @@ from logging.handlers import RotatingFileHandler
 
 api_id = 3748059
 api_hash = "f8c9df448f3ba20a900bc2ffc8dae9d5"
-bot_token = "6648894114:AAF-Lv3IalLBVq0DJ8YUXJglUCNFY671ZI4"
-chat_id = -1001610151919
-channel_id = -1001903796053
-mp_link = "https://t.me/shelbytaw"
-allow_id = "5475778989"
+bot_token = "6815912866:AAGt9sdcdbBGXYr7wnujLr-qxF7_rzUAIXw"
+chat_id = -1002082600545
+channel_id = -1001652649943
+mp_link = "https://t.me/sassympp"
+allow_id = "1861109163"
 max_posts_per_day = 4 
 max_time = 300
 
