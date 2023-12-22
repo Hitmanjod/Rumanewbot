@@ -15,7 +15,7 @@ channel_id = -1001930768149
 mp_link = "https://t.me/FrigidMarket"
 allow_id = "6162272468"
 max_posts_per_day = 4
-max_time = 600
+max_time = 300
 
 logging.basicConfig(
     level=logging.DEBUG,
