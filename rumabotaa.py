@@ -9,13 +9,13 @@ from logging.handlers import RotatingFileHandler
 
 api_id = 3748059
 api_hash = "f8c9df448f3ba20a900bc2ffc8dae9d5"
-bot_token = "6385806619:AAFnE3VQtxEcY3BOA4AM_Wc8KeNX7HcSCSI"
-chat_id = -1001966244490
-channel_id = -1001965686230
-mp_link = "https://t.me/+S7eRH90lM38wNmQ1"
-allow_id = "6170272669"
+bot_token = "6961656001:AAHvhsXsKopXJRfmZAoVsfvmtNPbEmauh6w"
+chat_id = -1002038780063
+channel_id = -1001930768149
+mp_link = "https://t.me/FrigidMarket"
+allow_id = "6162272468"
 max_posts_per_day = 4
-max_time = 300
+max_time = 600
 
 logging.basicConfig(
     level=logging.DEBUG,
