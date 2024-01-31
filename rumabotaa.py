@@ -9,10 +9,10 @@ from logging.handlers import RotatingFileHandler
 
 api_id = 3748059
 api_hash = "f8c9df448f3ba20a900bc2ffc8dae9d5"
-bot_token = "6815912866:AAGt9sdcdbBGXYr7wnujLr-qxF7_rzUAIXw"
-chat_id = -1002082600545
-channel_id = -1001828917626
-mp_link = "https://t.me/sassympp"
+bot_token = "6681950760:AAHjCXdV6YN7JUbc_UUEcaLfpyf0eXGMW6k"
+chat_id = -1002086694702
+channel_id = -1001800745828
+mp_link = "https://t.me/SoykMotion"
 allow_id = "1861109163"
 max_posts_per_day = 4
 max_time = 300
