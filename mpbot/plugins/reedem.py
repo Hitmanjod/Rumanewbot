@@ -18,12 +18,42 @@ async def start(bot, msg):
     if code in sevendays:
         expiration_time = datetime.now() + timedelta(days=7)
         user_access_expiration[user_id] = expiration_time
-        await message.reply_text("Code reedemed successfully! You now have access for 7 days.")
+        chat_link = await bot.create_chat_invite_link(
+            chat_id=CHANNEL_ID,
+            name="LegendBotMPBot",
+            limit=1,
+        )
+        link = chat_link.invite_link
+        await message.reply(
+            "Code reedemed successfully! You now have access for 7 days.", 
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton("Channel Link", url=link)
+                    ]
+                ]
+            )
+        )
         sevendays.remove(code)
     elif code in monthly:
         expiration_time = datetime.now() + timedelta(days=30)
         user_access_expiration[user_id] = expiration_time
-        await message.reply_text("Code reedemed successfully! You now have access for 30 days.")
+        chat_link = await bot.create_chat_invite_link(
+            chat_id=CHANNEL_ID,
+            name="LegendBotMPBot",
+            limit=1,
+        )
+        link = chat_link.invite_link
+        await message.reply(
+            "Code reedemed successfully! You now have access for 30 days.", 
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton("Channel Link", url=link)
+                    ]
+                ]
+            )
+        )
         monthly.remove(code)
     else:
         await message.reply_text(f"Invalid Code")
