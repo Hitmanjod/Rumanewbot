@@ -64,7 +64,7 @@ async def start(bot, msg):
     user_id = msg.from_user.id
     if not user_id in user_access_expiration:
         return await msg.reply_text("You didnt subscribed my bot Contact owner to subscribe my bot")
-    days_left = user_access_expiration[user_id] - datetime.now()).days
+    days_left = (user_access_expiration[user_id] - datetime.now()).days
     await message.reply_text(f"Days left for your access - {days_left})
     
 
