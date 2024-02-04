@@ -30,7 +30,7 @@ async def start(bot, msg):
 @app.on_callback_query(filters.regex("stats"))
 async def stats(_, query: CallbackQuery):
     user_id = "Stats Of MarketPlace"
-    await query.edit_messae_text(user_id)
+    await query.edit_message_text(user_id)
 
 
 @app.on_callback_query(filters.regex("developer"))
