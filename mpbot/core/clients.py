@@ -10,15 +10,16 @@ from mpbot.plugins import ALL_MODULES
 from .logger import LOGS
 
 
+app = Client(
+    "app",
+    api_id=API_ID,
+    api_hash=API_HASH,
+    bot_token=BOT_TOKEN,
+    plugins=dict(root="mpbot/plugins"),
+)
+
 async def Start_MPBot():
     try:
-        app = Client(
-            "app",
-            api_id=API_ID,
-            api_hash=API_HASH,
-            bot_token=BOT_TOKEN,
-            plugins=dict(root="mpbot/plugins"),
-        )
         await app.start()
     except FloodWait as e:
         LOGS.error(f"Bot Wants to Sleep For {e.value}")
