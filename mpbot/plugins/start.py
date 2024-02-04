@@ -20,6 +20,7 @@ async def start(bot, msg):
                             ],
                             [
                                 InlineKeyboardButton("Developers", callback_data="developer"),
+                            ]
                         ]
                     )
                    )
