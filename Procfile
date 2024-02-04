@@ -1,1 +1,1 @@
-worker: python3 rumabotaa.py
+worker: python3 -m rumabotaa.py
