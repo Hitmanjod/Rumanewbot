@@ -30,6 +30,7 @@ async def stats(bot, query: CallbackQuery):
     user_id = "Stats Of MarketPlace"
     await query.edit_messae_text(user_id)
 
+
 @Client.on_callback_query(filters.regex("developer"))
 async def stats(bot, query: CallbackQuery):
     user_id = "Developer"
@@ -40,5 +41,3 @@ async def stats(bot, query: CallbackQuery):
 async def stats(bot, query: CallbackQuery):
     user_id = "About"
     await query.edit_message_text(user_id)
-
-
