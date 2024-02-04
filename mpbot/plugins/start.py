@@ -14,11 +14,31 @@ async def start(bot, msg):
             [
                 [
                     InlineKeyboardButton("Marketplace", url=f"{MP_LINK}"),
-                    InlineKeyboardButton("About", callback_data="about"),
+                    InlineKeyboardButton("Stats", callback_data="stats"),
                 ],
                 [
                     InlineKeyboardButton("Developers", callback_data="developer"),
+                    InlineKeyboardButton("About", callback_data="about"),
                 ],
             ]
         ),
     )
+
+
+@Client.on_callback_query(filters.regex("stats"))
+async def stats(bot, query: CallbackQuery):
+    user_id = "Stats Of MarketPlace"
+    await query.edit_messae_text(user_id)
+
+@Client.on_callback_query(filters.regex("developer"))
+async def stats(bot, query: CallbackQuery):
+    user_id = "Developer"
+    await query.edit_message_text(user_id)
+
+
+@Client.on_callback_query(filters.regex("about"))
+async def stats(bot, query: CallbackQuery):
+    user_id = "About"
+    await query.edit_message_text(user_id)
+
+
