@@ -1,6 +1,8 @@
 from mpbot.core.logger import LOGS
+
 LOAD = []
 NO_LOAD = []
+
 
 def __list_all_modules():
     import glob
