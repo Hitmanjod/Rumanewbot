@@ -1,5 +1,5 @@
 from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 
 from mpbot.Config import MP_LINK
 
@@ -26,18 +26,18 @@ async def start(bot, msg):
 
 
 @Client.on_callback_query(filters.regex("stats"))
-async def stats(bot, query: CallbackQuery):
+async def stats(_, query: CallbackQuery):
     user_id = "Stats Of MarketPlace"
     await query.edit_messae_text(user_id)
 
 
 @Client.on_callback_query(filters.regex("developer"))
-async def stats(bot, query: CallbackQuery):
+async def stats(_, query: CallbackQuery):
     user_id = "Developer"
     await query.edit_message_text(user_id)
 
 
 @Client.on_callback_query(filters.regex("about"))
-async def stats(bot, query: CallbackQuery):
+async def stats(_, query: CallbackQuery):
     user_id = "About"
     await query.edit_message_text(user_id)
