@@ -6,5 +6,5 @@ loop = asyncio.get_event_loop()
 
 
 if __name__ == "__main__":
-    loop.run_until_complete(Start_MpBot())
+    loop.run_until_complete(Start_MPBot())
     print(" Good Bye ! ")
