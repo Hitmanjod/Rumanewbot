@@ -9,7 +9,6 @@ from mpbot.plugins import ALL_MODULES
 
 from .logger import LOGS
 
-
 app = Client(
     "app",
     api_id=API_ID,
@@ -17,6 +16,7 @@ app = Client(
     bot_token=BOT_TOKEN,
     plugins=dict(root="mpbot/plugins"),
 )
+
 
 async def Start_MPBot():
     try:
