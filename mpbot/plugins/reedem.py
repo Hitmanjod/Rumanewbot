@@ -11,8 +11,28 @@ monthly = ["ada", "afddf"]
 user_access_expiration = {}
 
 
+@app.on_message(filters.command(["getreedem"]) & ~filters.bot)
+async def getered(bot, message):
+    days = message.text.split(" ")[1]
+    if days == "7":
+        try:
+            key_ = sevendays[0]
+            await message.reply_text("Reedem code for 7 days - `{key_}`")
+        except IndexError:
+            await message.reply_text("Reedem code is ended for 7 days. Add more renew code by using command /load")
+    elif days == "30":
+        try:
+            key_ = monthly[0]
+            await message.reply_text("Reedem code for 30 days- `{key_}`")
+        except IndexError:
+            await message.reply_text("Reedem code is ended for monthly. Add more code by using command /load")
+            
+    
+
+
+    
 @app.on_message(filters.command(["reedem"]) & ~filters.bot)
-async def start(bot, msg):
+async def reedemf(bot, message):
     code = message.text.split(" ")[1]
     user_id = message.from_user.id
     if code in sevendays:
@@ -52,7 +72,7 @@ async def start(bot, msg):
 
 
 @app.on_message(filters.command(["sub"]) & ~filters.bot)
-async def start(bot, msg):
+async def subhh(bot, msg):
     user_id = msg.from_user.id
     if not user_id in user_access_expiration:
         return await msg.reply_text(
