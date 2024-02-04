@@ -1,1 +1,1 @@
-worker: python3 -m mpbot.py
+worker: python3 -m mpbot
