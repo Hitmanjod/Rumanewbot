@@ -1,12 +1,12 @@
 from pyrogram import Client, filters
 from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
-
+from ..core.clients import app
 from mpbot.Config import MP_LINK
 
 # Start Message
 
 
-@Client.on_message(filters.command(["start"]) & ~filters.bot)
+@app.on_message(filters.command(["start"]) & ~filters.bot)
 async def start(bot, msg):
     await msg.reply(
         "Click the button below to join the connected marketplace with this bot",
@@ -25,19 +25,19 @@ async def start(bot, msg):
     )
 
 
-@Client.on_callback_query(filters.regex("stats"))
+@app.on_callback_query(filters.regex("stats"))
 async def stats(_, query: CallbackQuery):
     user_id = "Stats Of MarketPlace"
     await query.edit_messae_text(user_id)
 
 
-@Client.on_callback_query(filters.regex("developer"))
+@app.on_callback_query(filters.regex("developer"))
 async def stats(_, query: CallbackQuery):
     user_id = "Developer"
     await query.edit_message_text(user_id)
 
 
-@Client.on_callback_query(filters.regex("about"))
+@app.on_callback_query(filters.regex("about"))
 async def stats(_, query: CallbackQuery):
     user_id = "About"
     await query.edit_message_text(user_id)
