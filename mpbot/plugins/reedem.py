@@ -61,7 +61,9 @@ async def getered(bot, message):
             key_ = sevendays[0]
             await message.reply_text(f"Reedem code for 7 days - `{key_}`")
         except IndexError:
-            await message.reply_text("There is no slot left add by using command /addslot")
+            await message.reply_text(
+                "There is no slot left add by using command /addslot"
+            )
     elif days == "30":
         try:
             key_ = monthly[0]
