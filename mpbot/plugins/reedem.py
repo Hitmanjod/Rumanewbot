@@ -89,8 +89,9 @@ async def reeyydemf(bot, message):
         expire_time = (datetime.now() + timedelta(days=7)).strftime("%Y-%m-%d %H:%M:%S")
         if user_id in ok:
             days_left = (
-                (datetime.strptime(ok[user_id], "%Y-%m-%d %H:%M:%S") - datetime.now())
-            ) + (datetime.now() + timedelta(days=7)).strftime("%Y-%m-%d %H:%M:%S")
+                datetime.strptime(ok[user_id], "%Y-%m-%d %H:%M:%S") - datetime.now()) 
+            + datetime.now() 
+            + timedelta(days=7).strftime("%Y-%m-%d %H:%M:%S")
             add_expiration(user_id, days_left)
             return await message.reply(f"Plan extended till {days_left}")
         add_expiration(user_id, str(expire_time))
@@ -140,5 +141,5 @@ async def subhh(bot, msg):
         return await msg.reply_text(
             "You didnt subscribed my bot Contact owner to subscribe my bot"
         )
-    days_left = datetime.strptime(ok[user_id], "%Y-%m-%d %H:%M:%S") - datetime.now()
+    days_left = (ok[user_id] - datetime.now()).days
     await msg.reply_text(f"Days left for your access - {days_left}")
