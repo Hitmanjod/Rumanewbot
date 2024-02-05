@@ -1,4 +1,3 @@
-import datetime
 from datetime import datetime, timedelta
 
 from pyrogram import filters
@@ -75,28 +74,25 @@ async def getered(bot, message):
             )
 
 
-@app.on_message(filters.command(["reedem"]) & ~filters.bot)
-async def reedemf(bot, message):
+@Client.on_message(filters.command(["reedem"]))
+async def reeyydemf(bot, message):
     sevendays = get_seven_code()
     monthly = get_monthly_code()
-    ok = user_expiration()
+    exxx = user_expiration()
+    now_date = datetime.now()
     try:
         code = message.text.split(" ")[1]
     except IndexError:
         await message.reply("Usage format : `/reedem code`")
     user_id = message.from_user.id
-
     if code in sevendays:
-        print(datetime.now())
-        now_date = datetime.now()
         expire_time = now_date + timedelta(days=7)
-        if user_id in ok:
+        print(user_id, expire_time)
+        """if user_id in ok:
             days_left = ok[user_id] - now_date
-            total = days_left + expiration_time
+            total = days_left + expire_time
             add_expiration(user_id, total)
-            now_days = (ok[user_id] - datetime.now()).days
-            return await message.reply(f"Plan extended till {now_days}")
-        print(expire_time)
+            return await message.reply(f"Plan extended till {total}")"""
         add_expiration(user_id, expire_time)
         chat_link = await bot.create_chat_invite_link(
             chat_id=CHAT_ID,
