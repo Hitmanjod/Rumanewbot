@@ -31,14 +31,14 @@ async def staaart(bot, msg):
 @app.on_callback_query(filters.regex("stats"))
 async def stats(_, query: CallbackQuery):
     await query.edit_message_text("Processing...")
-    user_id = "Stats Of MarketPlace\n\n"
+    useid = "Stats Of MarketPlace\n\n"
     ok = user_expiration()
     for user_id, expire in ok.items():
         await app.resolve_peer(user_id)
         user = await app.get_users(int(user_id))
         name = user.first_name
-        user_id += f"• {name} : {expire}"
-    await query.edit_message_text(user_id)
+        useid += f"• {name} : {expire}"
+    await query.edit_message_text(useid)
 
 
 @app.on_callback_query(filters.regex("developer"))
