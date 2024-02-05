@@ -4,6 +4,7 @@ from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from ..core.clients import app
+from ..Config import *
 
 sevendays = ["afff", "afds"]
 monthly = ["ada", "afddf"]
@@ -17,7 +18,7 @@ async def getered(bot, message):
     if days == "7":
         try:
             sevendays[0]
-            await message.reply_text("Reedem code for 7 days - `{key_}`")
+            await message.reply_text(f"Reedem code for 7 days - `{key_}`")
         except IndexError:
             await message.reply_text(
                 "Reedem code is ended for 7 days. Add more renew code by using command /load"
@@ -25,7 +26,7 @@ async def getered(bot, message):
     elif days == "30":
         try:
             monthly[0]
-            await message.reply_text("Reedem code for 30 days- `{key_}`")
+            await message.reply_text(f"Reedem code for 30 days- `{key_}`")
         except IndexError:
             await message.reply_text(
                 "Reedem code is ended for monthly. Add more code by using command /load"
@@ -34,7 +35,10 @@ async def getered(bot, message):
 
 @app.on_message(filters.command(["reedem"]) & ~filters.bot)
 async def reedemf(bot, message):
-    code = message.text.split(" ")[1]
+    try:
+        code = message.text.split(" ")[1]
+    except IndexError:
+        await message.reply("/reedem <code>")
     user_id = message.from_user.id
     if code in sevendays:
         expiration_time = datetime.now() + timedelta(days=7)
@@ -80,4 +84,4 @@ async def subhh(bot, msg):
             "You didnt subscribed my bot Contact owner to subscribe my bot"
         )
     days_left = (user_access_expiration[user_id] - datetime.now()).days
-    await message.reply_text(f"Days left for your access - {days_left}")
+    await msg.reply_text(f"Days left for your access - {days_left}")
