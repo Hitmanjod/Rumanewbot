@@ -1,17 +1,12 @@
-from ..Config import *
-
 from pyrogram import filters
-from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
 
-from mpbot.Config import MP_LINK
-
+from ..Config import *
 from ..core.clients import app
 
 last_message_times = {}
 user_message_count = {}
 message_queue = {}
 allowed_user_id = SUDO_USERS.split(" ")
-
 
 
 @app.on_message(filters.chat(chat_id) & ~filters.bot & ~filters.service)
