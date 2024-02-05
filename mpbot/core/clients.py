@@ -1,6 +1,6 @@
 import asyncio
 import importlib
-
+from datetime import datetime
 import pyromod
 from pyrogram import Client, idle
 from pyrogram.errors import FloodWait
@@ -11,6 +11,8 @@ from mpbot.plugins import ALL_MODULES
 from .logger import LOGS
 
 print(pyromod.listen)
+
+
 app = Client(
     "app",
     api_id=API_ID,
@@ -19,6 +21,15 @@ app = Client(
     plugins=dict(root="mpbot/plugins"),
 )
 
+def check_member():
+    ok = user_expiration()
+    for user_id, expire in ok.items():
+        #expire_time = datetime.strptime(ok[user_id], "%Y-%m-%d %H:%M:%S") - datetime.now()
+        #king = expire_time
+        print(type(expire))
+        if datetime.now() > expire:
+            ok.pop(user_id)
+        
 
 async def Start_MPBot():
     try:
