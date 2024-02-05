@@ -27,10 +27,10 @@ app = Client(
 def check_member():
     ok = user_expiration()
     for user_id, expire in ok.items():
-        # expire_time = datetime.strptime(ok[user_id], "%Y-%m-%d %H:%M:%S") - datetime.now()
+        expire_time = datetime.strptime(ok[user_id], "%Y-%m-%d %H:%M:%S")
         # king = expire_time
-        print(type(expire))
-        if datetime.now() > expire:
+        print(type(expire_time))
+        if datetime.now() > expire_time:
             ok.pop(user_id)
 
 
