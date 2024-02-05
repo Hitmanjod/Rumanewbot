@@ -1,4 +1,4 @@
-from pyrogram import filters
+from pyrogram import filters, Client
 
 from ..Config import *
 from ..core.clients import app
@@ -9,7 +9,7 @@ message_queue = {}
 allowed_user_id = SUDO_USERS.split(" ")
 
 
-@app.on_message(filters.chat(CHAT_ID) & ~filters.bot & ~filters.service)
+@Client.on_message(filters.chat(CHAT_ID) & ~filters.bot & ~filters.service)
 async def forward_handler(bot, message):
     user_id = message.from_user.id
     reply_id = (
