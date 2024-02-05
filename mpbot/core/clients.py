@@ -6,7 +6,7 @@ import pyromod
 from pyrogram import Client, idle
 from pyrogram.errors import FloodWait
 
-from mpbot.Config import API_HASH, API_ID, BOT_TOKEN
+from mpbot.Config import API_HASH, API_ID, BOT_TOKEN, CHAT_ID
 from mpbot.plugins import ALL_MODULES
 
 from ..database.all_db import legend_db
