@@ -86,13 +86,11 @@ async def reeyydemf(bot, message):
         await message.reply("Usage format : `/reedem code`")
     user_id = message.from_user.id
     if code in sevendays:
-        expire_time = now_date + timedelta(days=7)
-        print(user_id, expire_time)
-        """if user_id in ok:
-            days_left = ok[user_id] - now_date
-            total = days_left + expire_time
-            add_expiration(user_id, total)
-            return await message.reply(f"Plan extended till {total}")"""
+        expire_time = (datetime.now() + timedelta(days=7)).strftime('%Y-%m-%d %H:%M:%S')
+        if user_id in ok:
+            days_left = ((datetime.strptime(ok[user_id], '%Y-%m-%d %H:%M:%S') - datetime.now()) + datetime.now() + timedelta(days=7).strftime('%Y-%m-%d %H:%M:%S')
+            add_expiration(user_id, days_left)
+            return await message.reply(f"Plan extended till {days_left}")
         add_expiration(user_id, str(expire_time))
         chat_link = await bot.create_chat_invite_link(
             chat_id=CHAT_ID,
