@@ -8,8 +8,8 @@ from ..core.clients import app
 # Start Message
 
 
-@Clien.on_message(filters.command(["start"]) & ~filters.bot)
-async def start(bot, msg):
+@app.on_message(filters.command(["start"]) & ~filters.bot)
+async def staaart(bot, msg):
     await msg.reply(
         "Click the button below to join the connected marketplace with this bot",
         reply_markup=InlineKeyboardMarkup(
