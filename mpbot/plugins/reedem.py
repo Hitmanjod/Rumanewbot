@@ -76,6 +76,7 @@ async def getered(bot, message):
 async def reedemf(bot, message):
     sevendays = get_seven_code()
     monthly = get_monthly_code()
+    ok = user_expiration()
     try:
         code = message.text.split(" ")[1]
     except IndexError:
@@ -84,9 +85,13 @@ async def reedemf(bot, message):
 
     if code in sevendays:
         expiration_time = datetime.now() + timedelta(days=7)
-        added = add_expiration(user_id, expiration_time)
-        if not added:
-            return await message.reply("Plan extended for 7 days successfully")
+        if user_id in ok:
+            days_left = ok[user_id] - datetime.now()
+            total_add = days_left + expiration_time
+            added = add_expiration(user_id, total)
+            now_days = (ok[user_id] - datetime.now()).days
+            return await message.reply(f"Plan extended till {now_days}")
+        added = add_expiration(user_id, total)
         chat_link = await bot.create_chat_invite_link(
             chat_id=CHAT_ID,
             name="LegendMPBot",
@@ -101,10 +106,13 @@ async def reedemf(bot, message):
         )
     elif code in monthly:
         expiration_time = datetime.now() + timedelta(days=30)
-        added = add_expiration(user_id, expiration_time)
-        if not added:
-            return await message.reply("Plan extended for 30 days successfully")
-        user_access_expiration[user_id] = expiration_time
+        if user_id in ok:
+            days_left = ok[user_id] - datetime.now()
+            total_add = days_left + expiration_time
+            add_expiration(user_id, total)
+            now_days = (ok[user_id] - datetime.now()).days
+            return await message.reply(f"Plan extended till {now_days}")
+        add_expiration(user_id, total)
         chat_link = await bot.create_chat_invite_link(
             chat_id=CHAT_ID,
             name="LegendMPBot",
