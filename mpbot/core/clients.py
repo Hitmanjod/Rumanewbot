@@ -8,7 +8,7 @@ from pyrogram.errors import FloodWait
 
 from mpbot.Config import API_HASH, API_ID, BOT_TOKEN
 from mpbot.plugins import ALL_MODULES
-
+from ..database.reedem_db import *
 from .logger import LOGS
 
 print(pyromod.listen)
