@@ -11,7 +11,7 @@ from ..helpers.check import check_sudo
 
 @app.on_message(filters.command(["load"]))
 async def load(bot, msg):
-    if not check_sudo(message.from_user.id):
+    if not check_sudo(msg.from_user.id):
         return
     editable = await msg.from_user.ask("Send me File")
     x = await editable.download()
@@ -62,7 +62,7 @@ async def getered(bot, message):
             await message.reply_text(f"Reedem code for 7 days - `{key_}`")
         except IndexError:
             await message.reply_text(
-                "Reedem code is ended for 7 days. Add more renew code by using command /load"
+                "Slot is ended"
             )
     elif days == "30":
         try:
@@ -70,7 +70,7 @@ async def getered(bot, message):
             await message.reply_text(f"Reedem code for 30 days- `{key_}`")
         except IndexError:
             await message.reply_text(
-                "Reedem code is ended for monthly. Add more code by using command /load"
+                "Slot is ended"
             )
 
 
