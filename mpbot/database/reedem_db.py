@@ -31,12 +31,5 @@ def user_expiration():
 
 def add_expiration(user_id, expiration):
     ok = user_expiration()
-    if user_id in ok:
-        days_left = ok[user_id] - datetime.now()
-        total_add = days_left + expiration
-        print(total_add)
-        ok.update({user_id: total_add})
-        legend_db.set_key("EXPIRATION", ok)
-        return false
     ok.update({user_id: expiration})
     return legend_db.set_key("EXPIRATION", ok)
