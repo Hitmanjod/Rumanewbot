@@ -16,7 +16,7 @@ async def load(bot, msg):
     editable = await msg.from_user.ask("Send me File")
     x = await editable.download()
     days = await msg.from_user.ask("For 7 days or 30 days?")
-    if days.text == 7:
+    if days.text == "7":
         try:
             with open(x, "r") as f:
                 content = f.read()
@@ -28,7 +28,7 @@ async def load(bot, msg):
         except Exception as e:
             return await msg.reply_text(f"ERROR : {e}")
         os.remove(x)
-    elif days.text == 30:
+    elif days.text == "30":
         try:
             with open(x, "r") as f:
                 content = f.read()
