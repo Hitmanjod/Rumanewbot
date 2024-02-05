@@ -8,7 +8,8 @@ from mpbot.Config import API_HASH, API_ID, BOT_TOKEN
 from mpbot.plugins import ALL_MODULES
 
 from .logger import LOGS
-
+import pyromod
+print(pyromod.listen)
 app = Client(
     "app",
     api_id=API_ID,
