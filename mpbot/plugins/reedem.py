@@ -5,9 +5,8 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from ..Config import *
 from ..core.clients import app
-from ..helpers.check import check_sudo
 from ..database.reedem_db import *
-
+from ..helpers.check import check_sudo
 
 
 @app.on_message(filter.command(["load"]))
@@ -25,7 +24,7 @@ async def load(bot, msg):
                 for i in new_content:
                     add_seven_reedem(i)
             lol = get_seven_code()
-            await msg.reply_text(f"Successfully Loaded in 7 days : {len(lol)}") 
+            await msg.reply_text(f"Successfully Loaded in 7 days : {len(lol)}")
         except Exception as e:
             return await msg.reply_text(f"ERROR : {e}")
         os.remove(x)
@@ -43,7 +42,6 @@ async def load(bot, msg):
         os.remove(x)
     else:
         await msg.reply(f"Choose correct days 7 or 30 days \nStart again : /load")
-
 
 
 @app.on_message(filters.command(["getreedem"]))
@@ -85,7 +83,7 @@ async def reedemf(bot, message):
     except IndexError:
         await message.reply("/reedem code")
     user_id = message.from_user.id
-    
+
     if code in sevendays:
         expiration_time = datetime.now() + timedelta(days=7)
         added = add_expiration(user_id, expiration_time)
