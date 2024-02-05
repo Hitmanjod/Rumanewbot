@@ -1,4 +1,3 @@
-import logging
 from datetime import datetime, timedelta
 
 from pyrogram import Client, filters
@@ -81,8 +80,6 @@ async def getered(bot, message):
             await message.reply_text(
                 "There is no slot left for 30 days add by using command /addslot"
             )
-        
-        
 
 
 @Client.on_message(filters.command(["reedem"]))
@@ -121,7 +118,9 @@ async def reeyydemf(bot, message):
             ),
         )
     elif code in monthly:
-        expire_time = (datetime.now() + timedelta(days=30)).strftime("%Y-%m-%d %H:%M:%S")
+        expire_time = (datetime.now() + timedelta(days=30)).strftime(
+            "%Y-%m-%d %H:%M:%S"
+        )
         if user_id in ok:
             expire_time = (
                 datetime.strptime(ok[user_id], "%Y-%m-%d %H:%M:%S") - datetime.now()
