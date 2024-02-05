@@ -15,7 +15,7 @@ async def load(bot, msg):
         return
     editable = await msg.from_user.ask("Send me File")
     x = await editable.download()
-    days = await msg.from_user.ask("For 7 days or 30 days?")
+    days = await msg.from_user.ask("For `7` days or `30` days?")
     if days.text == "7":
         try:
             with open(x, "r") as f:
@@ -54,14 +54,14 @@ async def getered(bot, message):
         days = message.text.split(" ")[1]
     except IndexError:
         return await message.reply(
-            f"Provide me day 7 and 30 with code, /getreedem 7 or /getreedem 30"
+            f"Provide me day 7 and 30 with code, `/getreedem 7` or `/getreedem 30`"
         )
     if days == "7":
         try:
             key_ = sevendays[0]
             await message.reply_text(f"Reedem code for 7 days - `{key_}`")
         except IndexError:
-            await message.reply_text("Slot is ended")
+            await message.reply_text("There is no slot left add by using command /addslot")
     elif days == "30":
         try:
             key_ = monthly[0]
@@ -87,11 +87,11 @@ async def reedemf(bot, message):
         expiration_time = datetime.now() + timedelta(days=7)
         if user_id in ok:
             days_left = ok[user_id] - datetime.now()
-            days_left + expiration_time
+            total = days_left + expiration_time
             add_expiration(user_id, total)
             now_days = (ok[user_id] - datetime.now()).days
             return await message.reply(f"Plan extended till {now_days}")
-        add_expiration(user_id, total)
+        add_expiration(user_id, expiration_time)
         chat_link = await bot.create_chat_invite_link(
             chat_id=CHAT_ID,
             name="LegendMPBot",
