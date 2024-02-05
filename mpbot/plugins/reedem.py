@@ -67,7 +67,9 @@ async def getered(bot, message):
             key_ = monthly[0]
             await message.reply_text(f"Reedem code for 30 days- `{key_}`")
         except IndexError:
-            await message.reply_text("There is no slot left add by using command /addslot")
+            await message.reply_text(
+                "There is no slot left add by using command /addslot"
+            )
 
 
 @app.on_message(filters.command(["reedem"]) & ~filters.bot)
