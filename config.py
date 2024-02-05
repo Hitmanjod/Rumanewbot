@@ -1,3 +1,5 @@
+import os
+
 API_ID = 3748059
 API_HASH = "f8c9df448f3ba20a900bc2ffc8dae9d5"
 BOT_TOKEN = "6881298907:AAEUslppizLWBMCS6AwF0x4CtuTzVtPp47s"
