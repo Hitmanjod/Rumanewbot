@@ -93,6 +93,7 @@ async def reedemf(bot, message):
             add_expiration(user_id, total)
             now_days = (ok[user_id] - datetime.now()).days
             return await message.reply(f"Plan extended till {now_days}")
+        print(expiration_time)
         add_expiration(user_id, expiration_time)
         chat_link = await bot.create_chat_invite_link(
             chat_id=CHAT_ID,
