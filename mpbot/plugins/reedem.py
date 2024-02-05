@@ -61,9 +61,7 @@ async def getered(bot, message):
             key_ = sevendays[0]
             await message.reply_text(f"Reedem code for 7 days - `{key_}`")
         except IndexError:
-            await message.reply_text(
-                "There is no slot left add by using command /addslot"
-            )
+            await message.reply_text("There is no slot left add by using command /addslot")
     elif days == "30":
         try:
             key_ = monthly[0]
@@ -110,11 +108,11 @@ async def reedemf(bot, message):
         expiration_time = datetime.now() + timedelta(days=30)
         if user_id in ok:
             days_left = ok[user_id] - datetime.now()
-            days_left + expiration_time
+            total = days_left + expiration_time
             add_expiration(user_id, total)
             now_days = (ok[user_id] - datetime.now()).days
             return await message.reply(f"Plan extended till {now_days}")
-        add_expiration(user_id, total)
+        add_expiration(user_id, expiration_time)
         chat_link = await bot.create_chat_invite_link(
             chat_id=CHAT_ID,
             name="LegendMPBot",
