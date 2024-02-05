@@ -7,7 +7,7 @@ def get_seven_code():
     return legend_db.get_key("SCODE") or []
 
 
-def add_reedem(code):
+def add_seven_code(code):
     ok = get_seven_code()
     if not ok in code:
         ok.append(code)
@@ -16,6 +16,12 @@ def add_reedem(code):
 
 def get_monthly_code():
     return legend_db.get_key("MCODE") or []
+
+def add_monthly_code(code):
+    ok = get_monthly_code()
+    if not ok in code:
+        ok.append(code)
+        return legend_db.set_key("MCODE", ok)
 
 
 def user_expiration():
