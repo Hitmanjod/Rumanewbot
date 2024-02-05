@@ -136,5 +136,7 @@ async def subhh(bot, msg):
         return await msg.reply_text(
             "You didnt subscribed my bot Contact owner to subscribe my bot"
         )
-    days_left = (datetime.strptime(ok[user_id], "%Y-%m-%d %H:%M:%S") - datetime.now()).days
+    days_left = (
+        datetime.strptime(ok[user_id], "%Y-%m-%d %H:%M:%S") - datetime.now()
+    ).days
     await msg.reply_text(f"Days left for your access - {days_left}")
