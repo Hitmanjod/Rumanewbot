@@ -1,7 +1,8 @@
 import asyncio
 import time
 
-from pyrogram import filters
+from pyrogram import filters, Client
+from pyrogram.types import Message
 
 from ..Config import *
 from ..core.clients import app
@@ -12,8 +13,8 @@ message_queue = {}
 allowed_user_id = SUDO_USERS.split(" ")
 
 
-@app.on_message(filters.chat(CHAT_ID) & ~filters.bot & ~filters.service)
-async def forward_handler(bot, message):
+@app.on_message(filters.chat(CHAT_ID) & ~filters.service)
+async def forward_handler(bot: Client, message: Message):
     user_id = message.from_user.id
     reply_id = (
         message.reply_to_message.from_user.id if message.reply_to_message else None
@@ -44,7 +45,7 @@ async def forward_handler(bot, message):
         else None
     )
     if textss:
-        pass
+        return
     if message.chat.id in last_message_times:
         if str(user_id) in str(allowed_user_id):
             last_message_times[user_id] = time.time()
@@ -54,8 +55,8 @@ async def forward_handler(bot, message):
                     "Today's Post Limit Exceeded !!!\n\nYou've now no posts left in your daily sub - wait 12 hours to refresh the post limit."
                 )
         time_since_last_message = time.time() - last_message_times[message.chat.id]
-        if time_since_last_message < int(max_time):
-            remaining_time = int(max_time) - time_since_last_message
+        if time_since_last_message < int(MAX_TIME):
+            remaining_time = int(MAX_TIME) - time_since_last_message
             cooldown_message = f"Please wait {int(remaining_time / 60)} minutes & {int(remaining_time % 60)} seconds before posting another message to the channel.\n\n**Your post is added to queue & will be posted after {int(remaining_time / 60)} minutes & {int(remaining_time % 60)} seconds automatically.**"
             await message.reply_text(cooldown_message)
             message_queue.update({message.id: [user_id, message.chat.id]})
