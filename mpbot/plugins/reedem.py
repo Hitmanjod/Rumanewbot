@@ -88,7 +88,7 @@ async def reeyydemf(bot, message):
     if code in sevendays:
         expire_time = (datetime.now() + timedelta(days=7)).strftime('%Y-%m-%d %H:%M:%S')
         if user_id in ok:
-            days_left = ((datetime.strptime(ok[user_id], '%Y-%m-%d %H:%M:%S') - datetime.now()) + datetime.now() + timedelta(days=7).strftime('%Y-%m-%d %H:%M:%S')
+            days_left = ((datetime.strptime(ok[user_id], '%Y-%m-%d %H:%M:%S') - datetime.now())) + datetime.now() + timedelta(days=7).strftime('%Y-%m-%d %H:%M:%S')
             add_expiration(user_id, days_left)
             return await message.reply(f"Plan extended till {days_left}")
         add_expiration(user_id, str(expire_time))
