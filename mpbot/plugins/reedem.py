@@ -12,12 +12,15 @@ monthly = ["ada", "afddf"]
 user_access_expiration = {}
 
 
-@app.on_message(filters.command(["getreedem"]) & ~filters.bot)
+@app.on_message(filters.command(["getreedem"]))
 async def getered(bot, message):
-    days = message.text.split(" ")[1]
+    try:
+        days = message.text.split(" ")[1]
+    except IndexError:
+        return await msg.reply(f"Provide me day 7 and 30 with code, /getreedem 7 or /getreedem 30")
     if days == "7":
         try:
-            sevendays[0]
+            key_ = sevendays[0]
             await message.reply_text(f"Reedem code for 7 days - `{key_}`")
         except IndexError:
             await message.reply_text(
@@ -25,7 +28,7 @@ async def getered(bot, message):
             )
     elif days == "30":
         try:
-            monthly[0]
+            key_ = monthly[0]
             await message.reply_text(f"Reedem code for 30 days- `{key_}`")
         except IndexError:
             await message.reply_text(
