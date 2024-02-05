@@ -17,6 +17,7 @@ def add_seven_code(code):
 def get_monthly_code():
     return legend_db.get_key("MCODE") or []
 
+
 def add_monthly_code(code):
     ok = get_monthly_code()
     if not ok in code:
