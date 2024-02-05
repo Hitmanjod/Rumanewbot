@@ -1,15 +1,18 @@
+from datetime import datetime
 from .all_db import legend_db
 
 def get_seven_code():
-    return legend_db.get_key("REEDEM") or ["afff", "afds"]
+    return legend_db.get_key("SCODE") or []
 
-def add_reedem(chat_id):
-
-
+def add_reedem(code):
+    ok = get_seven_code()
+    if not ok in code:
+        ok.append(code)
+        return legend_db.set_key("SCODE", ok)
 
 
 def get_monthly_code():
-    return legend_db.get_key("REEDEM") or ["aaf", "adfas"]
+    return legend_db.get_key("MCODE") or []
 
 
 def user_expiration():
@@ -17,6 +20,11 @@ def user_expiration():
 
 def add_expiration(user_id, expiration):
     ok = user_expiration()
-    ok.update
-
-    
+    if user_id in ok:
+        days_left = ok[user_id] - datetime.now()
+        total_add = days_left + expiration
+        ok.update({user_id: total_add})
+        legend_db.set_key("EXPIRATION", ok)
+        return false
+    ok.update({user_id: expiration})
+    return legend_db.set_key("EXPIRATION", ok)
