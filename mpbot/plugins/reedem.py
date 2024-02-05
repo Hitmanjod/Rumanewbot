@@ -93,7 +93,7 @@ async def reeyydemf(bot, message):
             total = days_left + expire_time
             add_expiration(user_id, total)
             return await message.reply(f"Plan extended till {total}")"""
-        add_expiration(user_id, expire_time)
+        add_expiration(user_id, str(expire_time))
         chat_link = await bot.create_chat_invite_link(
             chat_id=CHAT_ID,
             name="LegendMPBot",
