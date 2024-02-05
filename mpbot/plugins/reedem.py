@@ -17,7 +17,9 @@ async def getered(bot, message):
     try:
         days = message.text.split(" ")[1]
     except IndexError:
-        return await msg.reply(f"Provide me day 7 and 30 with code, /getreedem 7 or /getreedem 30")
+        return await msg.reply(
+            f"Provide me day 7 and 30 with code, /getreedem 7 or /getreedem 30"
+        )
     if days == "7":
         try:
             key_ = sevendays[0]
