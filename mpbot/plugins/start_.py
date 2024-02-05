@@ -2,8 +2,9 @@ from pyrogram import filters
 from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
 
 from mpbot.Config import MP_LINK
-from ..database.redeem_db import *
+
 from ..core.clients import app
+from ..database.redeem_db import *
 
 # Start Message
 
