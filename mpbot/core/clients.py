@@ -50,7 +50,7 @@ async def Start_MPBot():
     try:
         await app.start()
         await check_member()
-        await app.send_message(CHAT_ID, f"Hello")
+        await app.send_message(CHAT_ID, f"#START\n\n**Version:** - α • 1.2\n**Developed by:** - [Legend](https://t.me/LegendBoy_OP)\n\nYour Market Place Bot Has Been Started Successfully.")
     except FloodWait as e:
         LOGS.error(f"Bot Wants to Sleep For {e.value}")
         await asyncio.sleep(e.value + 5)
