@@ -1,3 +1,5 @@
+import logging
+
 from datetime import datetime, timedelta
 
 from pyrogram import Client, filters
@@ -88,16 +90,12 @@ async def reeyydemf(bot, message):
     if code in sevendays:
         expire_time = (datetime.now() + timedelta(days=7)).strftime("%Y-%m-%d %H:%M:%S")
         if user_id in ok:
-            days_left = (
+            expire_time = (
                 datetime.strptime(ok[user_id], "%Y-%m-%d %H:%M:%S") - datetime.now()
             )
-            +datetime.now()
-            +timedelta(days=7)
-            string_days = days_left.strftime("%Y-%m-%d %H:%M:%S")
-            print(type(days_left))
-            print(type(string_days))
-            add_expiration(user_id, string_days)
-            return await message.reply(f"Plan extended till {days_left}")
+            logging.info(type(expire_time))
+            #add_expiration(user_id, string_days)
+            return await message.reply(f"Plan extended till")
         add_expiration(user_id, expire_time)
         chat_link = await bot.create_chat_invite_link(
             chat_id=CHAT_ID,
