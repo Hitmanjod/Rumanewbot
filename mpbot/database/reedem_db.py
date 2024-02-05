@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from .all_db import legend_db
 
 
