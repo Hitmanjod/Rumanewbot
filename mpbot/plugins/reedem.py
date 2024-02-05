@@ -70,7 +70,7 @@ async def reeyydemf(bot, message):
     try:
         code = message.text.split(" ")[1]
     except IndexError:
-        await message.reply("Usage format : `/reedem code`")
+        return await message.reply("Usage format : `/reedem code`")
     user_id = message.from_user.id
     if code in sevendays:
         expire_time = (datetime.now() + timedelta(days=7)).strftime("%Y-%m-%d %H:%M:%S")
