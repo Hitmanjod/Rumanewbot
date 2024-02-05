@@ -9,7 +9,7 @@ from ..database.reedem_db import *
 from ..helpers.check import check_sudo
 
 
-@app.on_message(filter.command(["load"]))
+@app.on_message(filters.command(["load"]))
 async def load(bot, msg):
     if not check_sudo(message.from_user.id):
         return
