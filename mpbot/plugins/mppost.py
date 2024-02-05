@@ -13,7 +13,6 @@ message_queue = {}
 allowed_user_id = SUDO_USERS
 
 
-
 @app.on_message(filters.private)
 async def forward_private(bot: Client, message: Message):
     user_id = message.from_user.id
@@ -166,7 +165,6 @@ async def forward_private(bot: Client, message: Message):
         print("This is document")
     user_message_count[user_id] = user_message_count.get(user_id, 0) + 1
 
-    
 
 @app.on_message(filters.chat(CHAT_ID) & ~filters.service)
 async def forward_handler(bot: Client, message: Message):
