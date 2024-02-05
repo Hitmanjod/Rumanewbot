@@ -7,3 +7,7 @@ MP_LINK = "https://t.me/testingmpbots"
 SUDO_USERS = "5591734243"
 MAX_POSTS_PER_DAY = 4
 MAX_TIME = 300
+REDIS_URI = None
+REDISHOST = None
+MONGO_URI = None
+DATABASE_URL = os.environ.get("DATABASE_URL", None)
