@@ -8,7 +8,7 @@ message_queue = {}
 allowed_user_id = SUDO_USERS.split(" ")
 
 
-@Client.on_message(filters.chat(CHAT_ID) & ~filters.bot & ~filters.service)
+@app.on_message(filters.chat(CHAT_ID) & ~filters.bot & ~filters.service)
 async def forward_handler(bot, message):
     user_id = message.from_user.id
     reply_id = (
@@ -40,7 +40,7 @@ async def forward_handler(bot, message):
         else None
     )
     if textss:
-        return
+        pass
     if message.chat.id in last_message_times:
         if str(user_id) in str(allowed_user_id):
             last_message_times[user_id] = time.time()
