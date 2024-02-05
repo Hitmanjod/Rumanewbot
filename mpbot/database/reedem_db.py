@@ -1,8 +1,11 @@
 from datetime import datetime
+
 from .all_db import legend_db
+
 
 def get_seven_code():
     return legend_db.get_key("SCODE") or []
+
 
 def add_reedem(code):
     ok = get_seven_code()
@@ -17,6 +20,7 @@ def get_monthly_code():
 
 def user_expiration():
     return legend_db.get_key("EXPIRATION") or {}
+
 
 def add_expiration(user_id, expiration):
     ok = user_expiration()
