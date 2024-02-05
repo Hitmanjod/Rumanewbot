@@ -63,7 +63,7 @@ async def reedemf(bot, message):
             chat_id=CHANNEL_ID,
             name="LegendBotMPBot",
             member_
-            limit=1,
+            member_limit=1,
         )
         link = chat_link.invite_link
         await message.reply(
