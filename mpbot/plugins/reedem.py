@@ -93,6 +93,8 @@ async def reeyydemf(bot, message):
                 datetime.strptime(ok[user_id], "%Y-%m-%d %H:%M:%S") - datetime.now()
             )
             logging.info(type(expire_time))
+            king = expire_time + timedelta(days=7) + datetime.now()
+            loggin.info(type(king))
             # add_expiration(user_id, string_days)
             return await message.reply(f"Plan extended till")
         add_expiration(user_id, expire_time)
