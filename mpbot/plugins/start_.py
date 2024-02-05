@@ -35,7 +35,7 @@ async def stats(_, query: CallbackQuery):
     ok = user_expiration()
     for user_id, expire in ok.items():
         peer_idsolve = await app.resolve_peer(user_id)
-        user = await app.get_users(peer_idsolve)
+        user = await app.get_users(int(user_id))
         name = user.first_name
         user_id += f"• {name} : {expire}"
     await query.edit_message_text(user_id)
