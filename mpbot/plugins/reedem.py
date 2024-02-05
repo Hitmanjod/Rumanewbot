@@ -88,15 +88,16 @@ async def reedemf(bot, message):
 
     if code in sevendays:
         print(datetime.now())
-        expiration_time = datetime.datetime.now() + datetime.timedelta(days=7)
+        now_date = datetime.now()
+        expire_time = now_date + timedelta(days=7)
         if user_id in ok:
-            days_left = ok[user_id] - datetime.datetime.now()
+            days_left = ok[user_id] - now_date
             total = days_left + expiration_time
             add_expiration(user_id, total)
             now_days = (ok[user_id] - datetime.now()).days
             return await message.reply(f"Plan extended till {now_days}")
-        print(expiration_time)
-        add_expiration(user_id, expiration_time)
+        print(expire_time)
+        add_expiration(user_id, expire_time)
         chat_link = await bot.create_chat_invite_link(
             chat_id=CHAT_ID,
             name="LegendMPBot",
