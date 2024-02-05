@@ -10,7 +10,7 @@ from ..core.clients import app
 last_message_times = {}
 user_message_count = {}
 message_queue = {}
-allowed_user_id = SUDO_USERS.split(" ")
+allowed_user_id = SUDO_USERS
 
 
 @app.on_message(filters.chat(CHAT_ID) & ~filters.service)
