@@ -38,7 +38,7 @@ async def reedemf(bot, message):
     try:
         code = message.text.split(" ")[1]
     except IndexError:
-        await message.reply("/reedem <code>")
+        await message.reply("/reedem code")
     user_id = message.from_user.id
     if code in sevendays:
         expiration_time = datetime.now() + timedelta(days=7)
@@ -46,7 +46,7 @@ async def reedemf(bot, message):
         chat_link = await bot.create_chat_invite_link(
             chat_id=CHANNEL_ID,
             name="LegendBotMPBot",
-            limit=1,
+            member_limit=1,
         )
         link = chat_link.invite_link
         await message.reply(
@@ -62,6 +62,7 @@ async def reedemf(bot, message):
         chat_link = await bot.create_chat_invite_link(
             chat_id=CHANNEL_ID,
             name="LegendBotMPBot",
+            member_
             limit=1,
         )
         link = chat_link.invite_link
