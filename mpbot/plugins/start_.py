@@ -4,7 +4,7 @@ from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMa
 from mpbot.Config import MP_LINK
 
 from ..core.clients import app
-from ..database.redeem_db import *
+from ..database.reedem_db import *
 
 # Start Message
 
