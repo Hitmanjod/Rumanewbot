@@ -29,6 +29,6 @@ def user_expiration():
 
 def add_expiration(user_id, expire):
     ok = user_expiration()
-    ok.update({user_id: expire})
+    ok[user_id] = expire
     legend_db.set_key("EXPIRATION", ok)
     return
