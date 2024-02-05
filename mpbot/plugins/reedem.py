@@ -79,16 +79,20 @@ async def reeyydemf(bot, message):
     sevendays = get_seven_code()
     monthly = get_monthly_code()
     user_expiration()
-    now_date = datetime.now()
+    datetime.now()
     try:
         code = message.text.split(" ")[1]
     except IndexError:
         await message.reply("Usage format : `/reedem code`")
     user_id = message.from_user.id
     if code in sevendays:
-        expire_time = (datetime.now() + timedelta(days=7)).strftime('%Y-%m-%d %H:%M:%S')
+        expire_time = (datetime.now() + timedelta(days=7)).strftime("%Y-%m-%d %H:%M:%S")
         if user_id in ok:
-            days_left = ((datetime.strptime(ok[user_id], '%Y-%m-%d %H:%M:%S') - datetime.now())) + datetime.now() + timedelta(days=7).strftime('%Y-%m-%d %H:%M:%S')
+            days_left = (
+                ((datetime.strptime(ok[user_id], "%Y-%m-%d %H:%M:%S") - datetime.now()))
+                + datetime.now()
+                + timedelta(days=7).strftime("%Y-%m-%d %H:%M:%S")
+            )
             add_expiration(user_id, days_left)
             return await message.reply(f"Plan extended till {days_left}")
         add_expiration(user_id, str(expire_time))
