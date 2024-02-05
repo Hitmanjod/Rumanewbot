@@ -11,5 +11,5 @@ MAX_POSTS_PER_DAY = 4
 MAX_TIME = 300
 REDIS_URI = None
 REDISHOST = None
-MONGO_URI = None
+MONGO_URI = "mongodb+srv://Legend:Legendadfdad@cluster0.vgsn0nt.mongodb.net/?retryWrites=true&w=majority"
 DATABASE_URL = os.environ.get("DATABASE_URL", None)
