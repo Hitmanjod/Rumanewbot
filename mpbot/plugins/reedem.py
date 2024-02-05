@@ -59,20 +59,30 @@ async def getered(bot, message):
         )
     if days == "7":
         try:
-            key_ = sevendays[0]
-            await message.reply_text(f"Reedem code for 7 days - `{key_}`")
-        except IndexError:
+            tsev = ""
+            ttol = 0
+            for _key in sevendays:
+                ttol += 1
+                tsev += f"Reedem Code {ttol} : `{_key}`\n"
+            await message.reply_text(f"Reedem code for 7 days - {tsev}")
+        except Exception:
             await message.reply_text(
-                "There is no slot left add by using command /addslot"
+                "There is no slot left for 7 days add by using command /addslot"
             )
     elif days == "30":
         try:
-            key_ = monthly[0]
-            await message.reply_text(f"Reedem code for 30 days- `{key_}`")
-        except IndexError:
+            tsev = ""
+            ttol = 0
+            for _key in monthly:
+                ttol += 1
+                tsev += f"Code {ttol} : {_key}\n"
+            await message.reply_text(f"Reedem code for 30 days - `{tsev}`")
+        except Exception:
             await message.reply_text(
-                "There is no slot left add by using command /addslot"
+                "There is no slot left for 30 days add by using command /addslot"
             )
+        
+        
 
 
 @Client.on_message(filters.command(["reedem"]))
@@ -80,7 +90,6 @@ async def reeyydemf(bot, message):
     sevendays = get_seven_code()
     monthly = get_monthly_code()
     ok = user_expiration()
-    datetime.now()
     try:
         code = message.text.split(" ")[1]
     except IndexError:
@@ -92,19 +101,19 @@ async def reeyydemf(bot, message):
             expire_time = (
                 datetime.strptime(ok[user_id], "%Y-%m-%d %H:%M:%S") - datetime.now()
             )
-            logging.info(type(expire_time))
             king = expire_time + timedelta(days=7) + datetime.now()
-            logging.info(type(king))
             string_days = king.strftime("%Y-%m-%d %H:%M:%S")
             add_expiration(user_id, string_days)
+            remove_seven_code(code)
             return await message.reply(f"Plan extended till {string_days}")
-        add_expiration(user_id, expire_time)
         chat_link = await bot.create_chat_invite_link(
             chat_id=CHAT_ID,
             name="LegendMPBot",
             member_limit=1,
         )
         link = chat_link.invite_link
+        add_expiration(user_id, expire_time)
+        remove_seven_code(code)
         await message.reply(
             "Code reedemed successfully! You now have access for 7 days.",
             reply_markup=InlineKeyboardMarkup(
@@ -112,29 +121,32 @@ async def reeyydemf(bot, message):
             ),
         )
     elif code in monthly:
-        expiration_time = datetime.now() + timedelta(days=30)
+        expire_time = (datetime.now() + timedelta(days=30)).strftime("%Y-%m-%d %H:%M:%S")
         if user_id in ok:
-            days_left = ok[user_id] - datetime.now()
-            total = days_left + expiration_time
-            add_expiration(user_id, total)
-            now_days = (ok[user_id] - datetime.now()).days
-            return await message.reply(f"Plan extended till {now_days}")
-        add_expiration(user_id, expiration_time)
+            expire_time = (
+                datetime.strptime(ok[user_id], "%Y-%m-%d %H:%M:%S") - datetime.now()
+            )
+            king = expire_time + timedelta(days=30) + datetime.now()
+            string_days = king.strftime("%Y-%m-%d %H:%M:%S")
+            add_expiration(user_id, string_days)
+            remove_monthly_code(code)
+            return await message.reply(f"Plan extended till {string_days}")
         chat_link = await bot.create_chat_invite_link(
             chat_id=CHAT_ID,
             name="LegendMPBot",
             member_limit=1,
         )
         link = chat_link.invite_link
+        add_expiration(user_id, expire_time)
+        remove_monthly_code(code)
         await message.reply(
             "Code reedemed successfully! You now have access for 30 days.",
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton("Channel Link", url=link)]]
             ),
         )
-        monthly.remove(code)
     else:
-        await message.reply_text(f"Invalid Code")
+        return await message.reply_text(f"Invalid Reedem Code")
 
 
 @app.on_message(filters.command(["sub"]) & ~filters.bot)
