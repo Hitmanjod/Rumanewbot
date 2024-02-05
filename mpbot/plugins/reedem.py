@@ -9,7 +9,7 @@ from ..database.reedem_db import *
 from ..helpers.check import check_sudo
 
 
-@app.on_message(filters.command(["load"]))
+@app.on_message(filters.command(["addslot"]))
 async def load(bot, msg):
     if not check_sudo(msg.from_user.id):
         return
@@ -41,7 +41,7 @@ async def load(bot, msg):
             return await msg.reply_text(f"Error : {e}")
         os.remove(x)
     else:
-        await msg.reply(f"Choose correct days 7 or 30 days \nStart again : /load")
+        await msg.reply(f"Choose correct days 7 or 30 days \nStart again : /addslot")
 
 
 @app.on_message(filters.command(["getreedem"]))
@@ -61,13 +61,17 @@ async def getered(bot, message):
             key_ = sevendays[0]
             await message.reply_text(f"Reedem code for 7 days - `{key_}`")
         except IndexError:
-            await message.reply_text("Slot is ended")
+            await message.reply_text(
+                "Slot is ended"
+            )
     elif days == "30":
         try:
             key_ = monthly[0]
             await message.reply_text(f"Reedem code for 30 days- `{key_}`")
         except IndexError:
-            await message.reply_text("Slot is ended")
+            await message.reply_text(
+                "Slot is ended"
+            )
 
 
 @app.on_message(filters.command(["reedem"]) & ~filters.bot)
@@ -77,7 +81,7 @@ async def reedemf(bot, message):
     try:
         code = message.text.split(" ")[1]
     except IndexError:
-        await message.reply("/reedem code")
+        await message.reply("Usage format : `/reedem code`")
     user_id = message.from_user.id
 
     if code in sevendays:
