@@ -17,7 +17,7 @@ allowed_user_id = SUDO_USERS
 @app.on_message(filters.private)
 async def forward_private(bot: Client, message: Message):
     user_id = message.from_user.id
-    if message.from_user.id !== 5591734243:
+    if message.from_user.id != 5591734243:
         return
     reply_id = (
         message.reply_to_message.from_user.id if message.reply_to_message else None
