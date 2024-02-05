@@ -13,8 +13,6 @@ message_queue = {}
 allowed_user_id = SUDO_USERS
 
 
-
-
 @app.on_message(filters.chat([CHAT_ID, -1002099849146]) & ~filters.service)
 async def forward_handler(bot: Client, message: Message):
     user_id = message.from_user.id
