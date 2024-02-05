@@ -78,7 +78,7 @@ async def getered(bot, message):
 async def reeyydemf(bot, message):
     sevendays = get_seven_code()
     monthly = get_monthly_code()
-    exxx = user_expiration()
+    user_expiration()
     now_date = datetime.now()
     try:
         code = message.text.split(" ")[1]
