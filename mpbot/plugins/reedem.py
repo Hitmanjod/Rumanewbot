@@ -1,5 +1,5 @@
 import datetime
-
+from datetime import datetime, timedelta
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
@@ -86,6 +86,7 @@ async def reedemf(bot, message):
     user_id = message.from_user.id
 
     if code in sevendays:
+        print(datetime.now())
         expiration_time = datetime.datetime.now() + datetime.timedelta(days=7)
         if user_id in ok:
             days_left = ok[user_id] - datetime.datetime.now()
