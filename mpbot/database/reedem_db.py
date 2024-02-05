@@ -9,7 +9,7 @@ def get_seven_code():
 
 def add_seven_code(code):
     ok = get_seven_code()
-    if not ok in code:
+    if not code in ok:
         ok.append(code)
         return legend_db.set_key("SCODE", ok)
 
@@ -20,7 +20,7 @@ def get_monthly_code():
 
 def add_monthly_code(code):
     ok = get_monthly_code()
-    if not ok in code:
+    if not code in ok:
         ok.append(code)
         return legend_db.set_key("MCODE", ok)
 
