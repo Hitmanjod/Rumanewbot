@@ -28,10 +28,15 @@ app = Client(
 async def check_member():
     ok = user_expiration()
     for user_id, expire in ok.items():
-        renew_days = (datetime.strptime(ok[user_id], "%Y-%m-%d %H:%M:%S") - datetime.now()).days
+        renew_days = (
+            datetime.strptime(ok[user_id], "%Y-%m-%d %H:%M:%S") - datetime.now()
+        ).days
         if 2 < renew_days < 3 or 1 > renew_days > 0:
             try:
-                await app.send_message(user_id, f"Your subscription is ending in {renew_days} days. Buy a new key if you want to keep using this bot.")
+                await app.send_message(
+                    user_id,
+                    f"Your subscription is ending in {renew_days} days. Buy a new key if you want to keep using this bot.",
+                )
             except:
                 pass
         expire_time = datetime.strptime(ok[user_id], "%Y-%m-%d %H:%M:%S")
@@ -39,7 +44,6 @@ async def check_member():
             await app.kick_chat_member(CHAT_ID, user_id)
             ok.pop(user_id)
     legend_db.set_key("EXPIRATION", ok)
-    
 
 
 async def Start_MPBot():
