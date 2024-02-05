@@ -1,4 +1,4 @@
-from pyrogram import Client, filters
+from pyrogram import filters
 
 from ..Config import *
 
