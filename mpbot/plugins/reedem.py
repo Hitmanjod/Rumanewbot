@@ -50,36 +50,16 @@ async def getered(bot, message):
         return
     sevendays = get_seven_code()
     monthly = get_monthly_code()
-    try:
-        days = message.text.split(" ")[1]
-    except IndexError:
-        return await message.reply(
-            f"Provide me day 7 and 30 with code, `/getreedem 7` or `/getreedem 30`"
-        )
-    if days == "7":
-        try:
-            tsev = ""
-            ttol = 0
-            for _key in sevendays:
-                ttol += 1
-                tsev += f"Reedem Code {ttol} : `{_key}`\n"
-            await message.reply_text(f"Reedem code for 7 days - {tsev}")
-        except Exception:
-            await message.reply_text(
-                "There is no slot left for 7 days add by using command /addslot"
-            )
-    elif days == "30":
-        try:
-            tsev = ""
-            ttol = 0
-            for _key in monthly:
-                ttol += 1
-                tsev += f"Code {ttol} : {_key}\n"
-            await message.reply_text(f"Reedem code for 30 days - `{tsev}`")
-        except Exception:
-            await message.reply_text(
-                "There is no slot left for 30 days add by using command /addslot"
-            )
+    tsev = "**Reedem code for 7 days**\n"
+    ttol = 0
+    for _key in sevendays:
+        ttol += 1
+        tsev += f"{ttol}. `{_key}`\n"
+    tsev += "\n\n**Reedem Code For 30 Days**\n"
+    for skey in monthly:
+        ttol += 1
+        tsev += f"{ttol}. `{_key}`\n"
+    await message.reply_text(tsev)
 
 
 @Client.on_message(filters.command(["reedem"]))
