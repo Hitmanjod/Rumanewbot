@@ -5,6 +5,8 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from ..Config import *
 from ..core.clients import app
+from ..helper.check import check_sudo
+from ..database.reedem_db import get_seven_code
 
 sevendays = ["afff", "afds"]
 monthly = ["ada", "afddf"]
@@ -14,6 +16,10 @@ user_access_expiration = {}
 
 @app.on_message(filters.command(["getreedem"]))
 async def getered(bot, message):
+    sevendays = get_seven_code()
+    monthly = get_monthly_code()
+    if not check_sudo(message.from_user.id):
+        return
     try:
         days = message.text.split(" ")[1]
     except IndexError:
@@ -40,6 +46,8 @@ async def getered(bot, message):
 
 @app.on_message(filters.command(["reedem"]) & ~filters.bot)
 async def reedemf(bot, message):
+    sevendays = get_seven_code()
+    monthly = get_monthly_code()
     try:
         code = message.text.split(" ")[1]
     except IndexError:
@@ -49,8 +57,8 @@ async def reedemf(bot, message):
         expiration_time = datetime.now() + timedelta(days=7)
         user_access_expiration[user_id] = expiration_time
         chat_link = await bot.create_chat_invite_link(
-            chat_id=CHANNEL_ID,
-            name="LegendBotMPBot",
+            chat_id=CHAT_ID,
+            name="LegendMPBot",
             member_limit=1,
         )
         link = chat_link.invite_link
@@ -65,8 +73,8 @@ async def reedemf(bot, message):
         expiration_time = datetime.now() + timedelta(days=30)
         user_access_expiration[user_id] = expiration_time
         chat_link = await bot.create_chat_invite_link(
-            chat_id=CHANNEL_ID,
-            name="LegendBotMPBot",
+            chat_id=CHAT_ID,
+            name="LegendMPBot",
             member_limit=1,
         )
         link = chat_link.invite_link
