@@ -5,21 +5,53 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from ..Config import *
 from ..core.clients import app
-from ..database.reedem_db import get_seven_code
-from ..helper.check import check_sudo
+from ..helpers.check import check_sudo
+from ..database.reedem_db import *
 
-sevendays = ["afff", "afds"]
-monthly = ["ada", "afddf"]
 
-user_access_expiration = {}
+
+@app.on_message(filter.command(["load"]))
+async def load(bot, msg):
+    if not check_sudo(message.from_user.id):
+        return
+    editable = await msg.from_user.ask("Send me File")
+    x = await editable.download()
+    days = await msg.from_user.ask("For 7 days or 30 days?")
+    if days.text == 7:
+        try:
+            with open(x, "r") as f:
+                content = f.read()
+                new_content = content.split("\n")
+                for i in new_content:
+                    add_seven_reedem(i)
+            lol = get_seven_code()
+            await msg.reply_text(f"Successfully Loaded in 7 days : {len(lol)}") 
+        except Exception as e:
+            return await msg.reply_text(f"ERROR : {e}")
+        os.remove(x)
+    elif days.text = 30:
+        try:
+            with open(x, "r") as f:
+                content = f.read()
+                new_content = content.split("\n")
+                for i in new_content:
+                    add_monthly_code(i)
+            lol = get_monthly_code()
+            await msg.reply_text(f"Successfully loaded in 30 days : {len(lol)}")
+        except Exception as e:
+            return await msg.reply_text(f"Error : {e}")
+        os.remove(x)
+    else:
+        await msg.reply(f"Choose correct days 7 or 30 days \nStart again : /load")
+
 
 
 @app.on_message(filters.command(["getreedem"]))
 async def getered(bot, message):
-    sevendays = get_seven_code()
-    monthly = get_monthly_code()
     if not check_sudo(message.from_user.id):
         return
+    sevendays = get_seven_code()
+    monthly = get_monthly_code()
     try:
         days = message.text.split(" ")[1]
     except IndexError:
@@ -53,9 +85,12 @@ async def reedemf(bot, message):
     except IndexError:
         await message.reply("/reedem code")
     user_id = message.from_user.id
+    
     if code in sevendays:
         expiration_time = datetime.now() + timedelta(days=7)
-        user_access_expiration[user_id] = expiration_time
+        added = add_expiration(user_id, expiration_time)
+        if not added:
+            return await message.reply("Plan extended for 7 days successfully")
         chat_link = await bot.create_chat_invite_link(
             chat_id=CHAT_ID,
             name="LegendMPBot",
@@ -68,9 +103,11 @@ async def reedemf(bot, message):
                 [[InlineKeyboardButton("Channel Link", url=link)]]
             ),
         )
-        sevendays.remove(code)
     elif code in monthly:
         expiration_time = datetime.now() + timedelta(days=30)
+        added = add_expiration(user_id, expiration_time)
+        if not added:
+            return await message.reply("Plan extended for 30 days successfully")
         user_access_expiration[user_id] = expiration_time
         chat_link = await bot.create_chat_invite_link(
             chat_id=CHAT_ID,
@@ -92,9 +129,10 @@ async def reedemf(bot, message):
 @app.on_message(filters.command(["sub"]) & ~filters.bot)
 async def subhh(bot, msg):
     user_id = msg.from_user.id
-    if not user_id in user_access_expiration:
+    ok = user_expiration()
+    if not user_id in ok:
         return await msg.reply_text(
             "You didnt subscribed my bot Contact owner to subscribe my bot"
         )
-    days_left = (user_access_expiration[user_id] - datetime.now()).days
+    days_left = (ok[user_id] - datetime.now()).days
     await msg.reply_text(f"Days left for your access - {days_left}")
