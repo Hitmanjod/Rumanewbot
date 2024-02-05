@@ -34,7 +34,7 @@ async def stats(_, query: CallbackQuery):
     user_id = "Stats Of MarketPlace\n\n"
     ok = user_expiration()
     for user_id, expire in ok.items():
-        peer_idsolve = await app.resolve_peer(user_id)
+        await app.resolve_peer(user_id)
         user = await app.get_users(int(user_id))
         name = user.first_name
         user_id += f"• {name} : {expire}"
