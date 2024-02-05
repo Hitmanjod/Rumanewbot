@@ -15,7 +15,7 @@ async def forward_handler(bot: Client, message: Message):
     reply_id = (
         message.reply_to_message.from_user.id if message.reply_to_message else None
     )
-    max_posts_per_day = MAX_POSTS_PER_DAY 
+    max_posts_per_day = MAX_POSTS_PER_DAY
     if message.text == "/sub":
         if reply_id:
             if user_message_count.get(reply_id, 0) >= int(max_posts_per_day):
