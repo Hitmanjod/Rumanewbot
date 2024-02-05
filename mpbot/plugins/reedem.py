@@ -95,7 +95,7 @@ async def reeyydemf(bot, message):
             logging.info(type(expire_time))
             king = expire_time + timedelta(days=7) + datetime.now()
             logging.info(type(king))
-            string_days = king.strftime('%Y-%m-%d %H:%M:%S')
+            string_days = king.strftime("%Y-%m-%d %H:%M:%S")
             add_expiration(user_id, string_days)
             return await message.reply(f"Plan extended till {string_days}")
         add_expiration(user_id, expire_time)
