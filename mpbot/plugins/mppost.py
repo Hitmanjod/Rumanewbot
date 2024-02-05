@@ -9,13 +9,13 @@ message_queue = {}
 allowed_user_id = SUDO_USERS.split(" ")
 
 
-@app.on_message(filters.chat(chat_id) & ~filters.bot & ~filters.service)
+@app.on_message(filters.chat(CHAT_ID) & ~filters.bot & ~filters.service)
 async def forward_handler(bot: Client, message: Message):
     user_id = message.from_user.id
     reply_id = (
         message.reply_to_message.from_user.id if message.reply_to_message else None
     )
-    max_posts_per_day = max_posts
+    max_posts_per_day = MAX_POSTS_PER_DAY 
     if message.text == "/sub":
         if reply_id:
             if user_message_count.get(reply_id, 0) >= int(max_posts_per_day):
@@ -69,7 +69,7 @@ async def forward_handler(bot: Client, message: Message):
                 if message.text:
                     try:
                         await bot.send_message(
-                            channel_id,
+                            CHANNEL_ID,
                             f"{message.text.html}\n\nPosted by @{message.from_user.username}",
                         )
                     except Exception as e:
@@ -79,37 +79,34 @@ async def forward_handler(bot: Client, message: Message):
                     caption = message.caption.html if message.caption else ""
                     try:
                         await bot.send_photo(
-                            id,
+                            CHANNEL_ID,
                             file_id,
                             caption=f"{caption}\n\nPosted by @{message.from_user.username}",
                         )
                     except Exception as e:
                         print(f"Error in {id} : {e}")
-                    os.remove(file_id)
                 elif message.animation:
                     file_id = message.animation.file_id
                     caption = message.caption.html if message.caption else ""
                     try:
                         await bot.send_animation(
-                            id,
+                            CHANNEL_ID,
                             file_id,
                             caption=f"{caption}\n\nPosted by @{message.from_user.username}",
                         )
                     except Exception as e:
                         print(f"Error in {id} : {e}")
-                    os.remove(file_id)
                 elif message.document:
                     file_id = message.document.file_id
                     caption = message.caption.html if message.caption else ""
                     try:
                         await bot.send_document(
-                            id,
+                            CHANNEL_ID,
                             file_id,
                             caption=f"{caption}\n\nPosted by @{message.from_user.username}",
                         )
                     except Exception as e:
                         print(f"Error in {id} : {e}")
-                    os.remove(file_id)
                 else:
                     print("This is something else")
                 user_message_count[usrid] = user_message_count.get(usrid, 0) + 1
@@ -118,50 +115,46 @@ async def forward_handler(bot: Client, message: Message):
             return
     last_message_times[message.chat.id] = time.time()
     if message.text:
-        for id in channel_id:
-            try:
-                await bot.send_message(
-                    id,
-                    f"{message.text.html}\n\nPosted by @{message.from_user.username}",
-                )
-            except Exception as e:
-                print(f"Error in {id} : {e}")
+        try:
+            await bot.send_message(
+                CHANNEL_ID,
+                f"{message.text.html}\n\nPosted by @{message.from_user.username}",
+            )
+        except Exception as e:
+            print(f"Error in {id} : {e}")
     elif message.photo:
         file_id = message.photo.file_id
         caption = message.caption.html if message.caption else ""
-        for id in channel_id:
-            try:
-                await bot.send_photo(
-                    id,
-                    file_id,
-                    caption=f"{caption}\n\nPosted by @{message.from_user.username}",
-                )
-            except Exception as e:
-                print(f"Error in {id} : {e}")
+        try:
+            await bot.send_photo(
+                CHANNEL_ID,
+                file_id,
+                caption=f"{caption}\n\nPosted by @{message.from_user.username}",
+            )
+        except Exception as e:
+            print(f"Error in {id} : {e}")
     elif message.animation:
         file_id = message.animation.file_id
         caption = message.caption.html if message.caption else ""
-        for id in channel_id:
-            try:
-                await bot.send_animation(
-                    id,
-                    file_id,
-                    caption=f"{caption}\n\nPosted by @{message.from_user.username}",
-                )
-            except Exception as e:
-                print(f"Error in {id} : {e}")
+        try:
+            await bot.send_animation(
+                CHANNEL_ID,
+                file_id,
+                caption=f"{caption}\n\nPosted by @{message.from_user.username}",
+            )
+        except Exception as e:
+            print(f"Error in {id} : {e}")
     elif message.document:
         file_id = message.document.file_id
         caption = message.caption.html if message.caption else ""
-        for id in channel_id:
-            try:
-                await bot.send_document(
-                    id,
-                    file_id,
-                    caption=f"{caption}\n\nPosted by @{message.from_user.username}",
-                )
-            except Exception as e:
-                print(f"Error in {id} : {e}")
+        try:
+            await bot.send_document(
+                CHANNEL_ID,
+                file_id,
+                caption=f"{caption}\n\nPosted by @{message.from_user.username}",
+            )
+        except Exception as e:
+            print(f"Error in {id} : {e}")
     else:
         print("This is document")
     user_message_count[user_id] = user_message_count.get(user_id, 0) + 1
