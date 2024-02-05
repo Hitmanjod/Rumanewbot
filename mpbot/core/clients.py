@@ -36,6 +36,7 @@ def check_member():
 
 async def Start_MPBot():
     try:
+        check_member()
         await app.start()
     except FloodWait as e:
         LOGS.error(f"Bot Wants to Sleep For {e.value}")
