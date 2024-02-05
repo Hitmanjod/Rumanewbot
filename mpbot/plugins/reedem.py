@@ -139,4 +139,4 @@ async def subhh(bot, msg):
     days_left = (
         datetime.strptime(ok[user_id], "%Y-%m-%d %H:%M:%S") - datetime.now()
     ).days
-    await msg.reply_text(f"Days left for your access - {days_left}")
+    await msg.reply_text(f"You have {days_left} days left on your subscription!")
