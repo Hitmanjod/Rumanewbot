@@ -58,7 +58,7 @@ async def getered(bot, message):
     tsev += "\n\n**Reedem Code For 30 Days**\n"
     for skey in monthly:
         ttol += 1
-        tsev += f"{ttol}. `{_key}`\n"
+        tsev += f"{ttol}. `{skey}`\n"
     await message.reply_text(tsev)
 
 
