@@ -16,6 +16,7 @@ allowed_user_id = SUDO_USERS
 @app.on_message(filters.chat([CHAT_ID, -1002099849146]) & ~filters.service)
 async def forward_handler(bot: Client, message: Message):
     user_id = message.from_user.id
+    username = message.from_user.username if user_id != 5591734243 else "TeamDiveAds"
     reply_id = (
         message.reply_to_message.from_user.id if message.reply_to_message else None
     )
@@ -74,7 +75,7 @@ async def forward_handler(bot: Client, message: Message):
                     try:
                         await bot.send_message(
                             CHANNEL_ID,
-                            f"{message.text.html}\n\nPosted by @{message.from_user.username}",
+                            f"{message.text.html}\n\nPosted by @{username}",
                         )
                     except Exception as e:
                         print(f"Error in {id} : {e}")
@@ -85,7 +86,7 @@ async def forward_handler(bot: Client, message: Message):
                         await bot.send_photo(
                             CHANNEL_ID,
                             file_id,
-                            caption=f"{caption}\n\nPosted by @{message.from_user.username}",
+                            caption=f"{caption}\n\nPosted by @{username}",
                         )
                     except Exception as e:
                         print(f"Error in {id} : {e}")
@@ -96,7 +97,7 @@ async def forward_handler(bot: Client, message: Message):
                         await bot.send_animation(
                             CHANNEL_ID,
                             file_id,
-                            caption=f"{caption}\n\nPosted by @{message.from_user.username}",
+                            caption=f"{caption}\n\nPosted by @{username}",
                         )
                     except Exception as e:
                         print(f"Error in {id} : {e}")
@@ -107,7 +108,7 @@ async def forward_handler(bot: Client, message: Message):
                         await bot.send_document(
                             CHANNEL_ID,
                             file_id,
-                            caption=f"{caption}\n\nPosted by @{message.from_user.username}",
+                            caption=f"{caption}\n\nPosted by @{username}",
                         )
                     except Exception as e:
                         print(f"Error in {id} : {e}")
@@ -122,7 +123,7 @@ async def forward_handler(bot: Client, message: Message):
         try:
             await bot.send_message(
                 CHANNEL_ID,
-                f"{message.text.html}\n\nPosted by @{message.from_user.username}",
+                f"{message.text.html}\n\nPosted by @{username}",
             )
         except Exception as e:
             print(f"Error in {id} : {e}")
@@ -133,7 +134,7 @@ async def forward_handler(bot: Client, message: Message):
             await bot.send_photo(
                 CHANNEL_ID,
                 file_id,
-                caption=f"{caption}\n\nPosted by @{message.from_user.username}",
+                caption=f"{caption}\n\nPosted by @{username}",
             )
         except Exception as e:
             print(f"Error in {id} : {e}")
@@ -144,7 +145,7 @@ async def forward_handler(bot: Client, message: Message):
             await bot.send_animation(
                 CHANNEL_ID,
                 file_id,
-                caption=f"{caption}\n\nPosted by @{message.from_user.username}",
+                caption=f"{caption}\n\nPosted by @{username}",
             )
         except Exception as e:
             print(f"Error in {id} : {e}")
@@ -155,7 +156,7 @@ async def forward_handler(bot: Client, message: Message):
             await bot.send_document(
                 CHANNEL_ID,
                 file_id,
-                caption=f"{caption}\n\nPosted by @{message.from_user.username}",
+                caption=f"{caption}\n\nPosted by @{username}",
             )
         except Exception as e:
             print(f"Error in {id} : {e}")
