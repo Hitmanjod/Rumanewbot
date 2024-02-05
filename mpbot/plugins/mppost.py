@@ -68,7 +68,7 @@ async def forward_handler(bot: Client, message: Message):
             for key, value in message_queue.items():
                 usrid = value[0]
                 value[1]
-                qu_max_posts_per_day = max_posts
+                qu_max_posts_per_day = MAX_POSTS_PER_DAY
                 if user_message_count.get(usrid, 0) >= int(qu_max_posts_per_day):
                     await message.reply_text(
                         "Today's Post Limit Exceeded !!!\n\nYou've now no posts left in your daily sub - wait 12 hours to refresh the post limit."
