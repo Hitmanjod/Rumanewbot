@@ -22,7 +22,7 @@ async def load(bot, msg):
                 content = f.read()
                 new_content = content.split("\n")
                 for i in new_content:
-                    add_seven_reedem(i)
+                    add_seven_code(i)
             lol = get_seven_code()
             await msg.reply_text(f"Successfully Loaded in 7 days : {len(lol)}")
         except Exception as e:
@@ -67,7 +67,7 @@ async def getered(bot, message):
             key_ = monthly[0]
             await message.reply_text(f"Reedem code for 30 days- `{key_}`")
         except IndexError:
-            await message.reply_text("Slot is ended")
+            await message.reply_text("There is no slot left add by using command /addslot")
 
 
 @app.on_message(filters.command(["reedem"]) & ~filters.bot)
