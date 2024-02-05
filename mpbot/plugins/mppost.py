@@ -1,7 +1,6 @@
-from pyrogram import filters, Client
+from pyrogram import Client, filters
 
 from ..Config import *
-from ..core.clients import app
 
 last_message_times = {}
 user_message_count = {}
