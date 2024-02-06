@@ -1,7 +1,7 @@
 import random
 from datetime import datetime, timedelta
 
-from pyrogram import Client, filters
+from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from ..Config import *
