@@ -63,7 +63,7 @@ async def getered(bot, message):
     await message.reply_text(tsev)
 
 
-@Client.on_message(filters.command(["reedem"]))
+@app.on_message(filters.command(["reedem"]))
 async def reeyydemf(bot, message):
     sevendays = get_seven_code()
     monthly = get_monthly_code()
