@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-
+import random
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
@@ -13,33 +13,29 @@ from ..helpers.check import check_sudo
 async def load(bot, msg):
     if not check_sudo(msg.from_user.id):
         return
-    editable = await msg.from_user.ask("Send me File")
-    x = await editable.download()
     days = await msg.from_user.ask("For `7` days or `30` days?")
     if days.text == "7":
-        try:
-            with open(x, "r") as f:
-                content = f.read()
-                new_content = content.split("\n")
-                for i in new_content:
-                    add_seven_code(i)
-            lol = get_seven_code()
-            await msg.reply_text(f"Successfully Loaded in 7 days : {len(lol)}")
-        except Exception as e:
-            return await msg.reply_text(f"ERROR : {e}")
-        os.remove(x)
+        owo = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
+        a = owo.split(" ")
+        for _ in range(20):
+            code = ""
+            for _ in range(4):
+                code += random.choice(a)
+            code = f"{code[0]}{code[1]}{code[2]}{code[3]}-{random.choice(a)}{random.choice(a)}{random.choice(a)}-{random.choice(a)}{random.choice(a)}{random.choice(a)}"
+            add_seven_code(code)
+        owo = get_seven_code()
+        await msg.reply(f"Total Loaded Slot in My Bot for 7 days : {len(owo)}\n\nCheck Reedem Code By Using /getreedem")
     elif days.text == "30":
-        try:
-            with open(x, "r") as f:
-                content = f.read()
-                new_content = content.split("\n")
-                for i in new_content:
-                    add_monthly_code(i)
-            lol = get_monthly_code()
-            await msg.reply_text(f"Successfully loaded in 30 days : {len(lol)}")
-        except Exception as e:
-            return await msg.reply_text(f"Error : {e}")
-        os.remove(x)
+        owo = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
+        a = owo.split(" ")
+        for _ in range(20):
+            code = ""
+            for _ in range(4):
+                code += random.choice(a)
+            code = f"{code[0]}{code[1]}{code[2]}{code[3]}-{random.choice(a)}{random.choice(a)}{random.choice(a)}-{random.choice(a)}{random.choice(a)}{random.choice(a)}"
+            add_monthly_code(code)
+        owo = get_monthly_code()
+        await msg.reply_text(f"Total Loaded Slot in My Bot for 30 days : {len(owo)}\n\nCheck Reedem Code By Using /getreedem")
     else:
         await msg.reply(f"Choose correct days 7 or 30 days \nStart again : /addslot")
 
