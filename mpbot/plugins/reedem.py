@@ -1,5 +1,6 @@
-from datetime import datetime, timedelta
 import random
+from datetime import datetime, timedelta
+
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
@@ -24,7 +25,9 @@ async def load(bot, msg):
             code = f"{code[0]}{code[1]}{code[2]}{code[3]}-{random.choice(a)}{random.choice(a)}{random.choice(a)}-{random.choice(a)}{random.choice(a)}{random.choice(a)}"
             add_seven_code(code)
         owo = get_seven_code()
-        await msg.reply(f"Total Loaded Slot in My Bot for 7 days : {len(owo)}\n\nCheck Reedem Code By Using /getreedem")
+        await msg.reply(
+            f"Total Loaded Slot in My Bot for 7 days : {len(owo)}\n\nCheck Reedem Code By Using /getreedem"
+        )
     elif days.text == "30":
         owo = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
         a = owo.split(" ")
@@ -35,7 +38,9 @@ async def load(bot, msg):
             code = f"{code[0]}{code[1]}{code[2]}{code[3]}-{random.choice(a)}{random.choice(a)}{random.choice(a)}-{random.choice(a)}{random.choice(a)}{random.choice(a)}"
             add_monthly_code(code)
         owo = get_monthly_code()
-        await msg.reply_text(f"Total Loaded Slot in My Bot for 30 days : {len(owo)}\n\nCheck Reedem Code By Using /getreedem")
+        await msg.reply_text(
+            f"Total Loaded Slot in My Bot for 30 days : {len(owo)}\n\nCheck Reedem Code By Using /getreedem"
+        )
     else:
         await msg.reply(f"Choose correct days 7 or 30 days \nStart again : /addslot")
 
