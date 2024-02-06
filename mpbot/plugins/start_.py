@@ -37,7 +37,7 @@ async def stats(_, query: CallbackQuery):
         await app.resolve_peer(user_id)
         user = await app.get_users(int(user_id))
         name = user.first_name
-        useid += f"• {name} : {expire}"
+        useid += f"• {name} : {expire}\n"
     await query.edit_message_text(useid)
 
 
