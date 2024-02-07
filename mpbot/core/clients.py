@@ -21,6 +21,8 @@ app = Client(
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
+    in_memory=True,
+    no_updates=True,
     plugins=dict(root="mpbot/plugins"),
 )
 
