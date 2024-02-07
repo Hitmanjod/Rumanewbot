@@ -1,11 +1,10 @@
 import random
 from datetime import datetime, timedelta
 
-from pyrogram import filters, Client
+from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from ..Config import *
-from ..core.clients import app
 from ..database.reedem_db import *
 from ..helpers.check import check_sudo
 
