@@ -1,8 +1,8 @@
 import random
 from datetime import datetime, timedelta
 
-from pyrogram import filters
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram import filters, Client
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from ..Config import *
 from ..core.clients import app
@@ -10,7 +10,7 @@ from ..database.reedem_db import *
 from ..helpers.check import check_sudo
 
 
-@app.on_message(filters.command(["addslot"]))
+@Client.on_message(filters.command(["addslot"]))
 async def load(bot, msg):
     if not check_sudo(msg.from_user.id):
         return
@@ -45,7 +45,7 @@ async def load(bot, msg):
         await msg.reply(f"Choose correct days 7 or 30 days \nStart again : /addslot")
 
 
-@app.on_message(filters.command(["getreedem"]))
+@Client.on_message(filters.command(["getreedem"]))
 async def getered(bot, message):
     if not check_sudo(message.from_user.id):
         return
@@ -63,8 +63,8 @@ async def getered(bot, message):
     await message.reply_text(tsev)
 
 
-@app.on_message(filters.command(["reedem"]))
-async def reeyydemf(bot, message):
+@Client.on_message(filters.command(["reedem"]))
+async def reemf(bot: Client, message: Message):
     sevendays = get_seven_code()
     monthly = get_monthly_code()
     ok = user_expiration()
@@ -126,10 +126,10 @@ async def reeyydemf(bot, message):
             ),
         )
     else:
-        return await message.reply_text(f"Invalid Reedem Code")
+        return await message.reply(f"Invalid Reedem Code")
 
 
-@app.on_message(filters.command(["sub"]) & ~filters.bot)
+@Client.on_message(filters.command(["sub"]) & ~filters.bot)
 async def subhh(bot, msg):
     user_id = msg.from_user.id
     ok = user_expiration()
